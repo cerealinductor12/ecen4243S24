@@ -16,8 +16,10 @@ main:   addi x2, x0, 5          # x2 = 5                  0         00500113
         add  x5, x5, x4         # x5 = (4 + 7) = 11       14        004282B3
         beq  x5, x7, end        # shouldn't be taken      18        02728863
         slt  x4, x3, x4         # x4 = (12 < 7) = 0       1C        0041A233
+        xor  x10, x11, x9 
         beq  x4, x0, around     # should be taken         20        00020463
         addi x5, x0, 0          # shouldn't happen        24        00000293
+         
 around: slt  x4, x7, x2         # x4 = (3 < 5)  = 1       28        0023A233
         add  x7, x4, x5         # x7 = (1 + 11) = 12      2C        005203B3
         sub  x7, x7, x2         # x7 = (12 - 5) = 7       30        402383B3

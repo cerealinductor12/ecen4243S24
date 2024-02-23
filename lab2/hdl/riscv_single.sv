@@ -154,9 +154,9 @@ module aludec (input  logic       opb5,
    assign RtypeSub = funct7b5 & opb5; // TRUE for R–type subtract
    always_comb
      case(ALUOp)
-       2'b00: ALUControl = 3'b000; // addition
-       2'b01: ALUControl = 3'b001; // subtraction
-       default: case(funct3) // R–type or I–type ALU
+      2'b00: ALUControl = 3'b000; // addition
+      2'b01: ALUControl = 3'b001; // subtraction
+      default: case(funct3) // R–type or I–type ALU
 		  3'b000: if (RtypeSub)
 		    ALUControl = 3'b001; // sub
 		  else
@@ -164,6 +164,10 @@ module aludec (input  logic       opb5,
 		  3'b010: ALUControl = 3'b101; // slt, slti
 		  3'b110: ALUControl = 3'b011; // or, ori
 		  3'b111: ALUControl = 3'b010; // and, andi
+      3'b100: ALUControl = 3'b100; // xor
+      3'b001: ALUControl = 3'b110; // sll
+      3'b011: ALUControl = 3'b000; // sltu
+      3'b101: ALUControl = 3'b111; // slr
 		  default: ALUControl = 3'bxxx; // ???
 		endcase // case (funct3)       
      endcase // case (ALUOp)
@@ -308,7 +312,7 @@ module alu (input  logic [31:0] a, b,
             input  logic [2:0] 	alucontrol,
             output logic [31:0] result,
             output logic 	zero);
-
+  typedef int unsigned uint;
    logic [31:0] 	       condinvb, sum;
    logic 		       v;              // overflow
    logic 		       isAddSub;       // true when is add or subtract operation
@@ -324,7 +328,11 @@ module alu (input  logic [31:0] a, b,
        3'b001:  result = sum;         // subtract
        3'b010:  result = a & b;       // and
        3'b011:  result = a | b;       // or
-       3'b101:  result = sum[31] ^ v; // slt       
+       3'b101:  result = sum[31] ^ v; // slt   
+       3'b100: result = a ^ b;        // xor    
+       3'b110: result = a << b;       //sll
+       3'b000: result =  uint(sum[31] ^ v); // sltu
+       3'b111: result = a >> b;       //slr
        default: result = 32'bx;
      endcase
 
