@@ -135,7 +135,7 @@ module maindec (input  logic [6:0] op,
        7'b0000011: controls = 11'b1_00_1_0_01_0_00_0; // lw
        7'b0100011: controls = 11'b0_01_1_1_00_0_00_0; // sw
        7'b0110011: controls = 11'b1_xx_0_0_00_0_10_0; // R–type
-       7'b1100011: controls = 11'b0_10_0_0_00_1_01_0; // beq
+       7'b1100011: controls = 11'b1_10_1_0_00_1_01_0; // B-Type
        7'b0010011: controls = 11'b1_00_1_0_00_0_10_0; // I–type ALU
        7'b1101111: controls = 11'b1_11_0_0_10_0_00_1; // jal
        default: controls = 11'bx_xx_x_x_xx_x_xx_x; // ???
@@ -150,8 +150,11 @@ module aludec (input  logic       opb5,
 	       output logic [3:0] ALUControl);
    
    logic 			  RtypeSub;
-   
+   logic        Btype;
+
+  //  assign Btype = 
    assign RtypeSub = funct7b5 & opb5; // TRUE for R–type subtract
+
    always_comb
      case(ALUOp)
       2'b00: ALUControl = 4'b0000; // addition
@@ -174,8 +177,18 @@ module aludec (input  logic       opb5,
         else
           ALUControl = 4'b0111; // srl
         default: ALUControl = 4'bxxxx; // ???
-		endcase // case (funct3)       
+		endcase // case (funct3)
   endcase // case (ALUOp)
+  
+    // case(ALUOp)
+    // default:
+    //   case(funct3)
+    //     3'b000: ALUControl = 4'b1100; //beq
+    //     3'b001: ALUControl = 4'b1010; //bne
+    //   default: ALUControl = 4'bxxxx;
+    //   endcase
+    // endcase
+
    
 endmodule // aludec
 
@@ -316,7 +329,7 @@ endmodule // dmem
 module alu (input  logic [31:0] a, b,
             input  logic [3:0] 	alucontrol,
             output logic [31:0] result,
-            output logic 	zero);
+            output logic 	Zero);
   typedef int unsigned uint;
    logic [31:0] 	       condinvb, sum;
    logic 		       v;              // overflow
@@ -343,10 +356,12 @@ module alu (input  logic [31:0] a, b,
        //  4'b1000: result = sum[31] ^ vu;  // sltu
        4'b0111: result = a >> b;       // srl
        4'b1001: result = a >>> b;      // sra
+      //  4'b1100: result = zero;         // beq
+      //  4'b1010: result = ~zero;         // bne
        default: result = 32'bx;
      endcase
 
-   assign zero = (result == 32'b0);
+   assign Zero = (result == 32'b0);
    assign v = ~(alucontrol[0] ^ a[31] ^ b[31]) & (a[31] ^ sum[31]) & isAddSub;
    // if a[31] = 0 and b[31] = 1: 1
    // if a[31] = 0 and b[31] = 0: 0
