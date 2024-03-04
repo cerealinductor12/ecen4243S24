@@ -172,6 +172,7 @@ module aludec (input  logic       opb5,
         3'b100: ALUControl = 4'b0100; // xor
         3'b001: ALUControl = 4'b0110; // sll
         3'b011: ALUControl = 4'b1000; // sltu
+        // lol
         3'b101: if (RtypeSub)
           ALUControl = 4'b1001; // sra
         else
