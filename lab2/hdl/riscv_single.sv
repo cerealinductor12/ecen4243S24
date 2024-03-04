@@ -1,5 +1,4 @@
 // riscvsingle.sv
-// test for editing from laptop
 // RISC-V single-cycle processor
 // From Section 7.6 of Digital Design & Computer Architecture
 // 27 April 2020
@@ -79,18 +78,18 @@ module riscvsingle (input  logic        clk, reset,
 		    output logic [31:0] ALUResult, WriteData,
 		    input  logic [31:0] ReadData);
    
-   logic 				ALUSrc, RegWrite, Jump, Zero;
+   logic 				ALUSrc, RegWrite, Jump, Zero, overflow, carry, negative;
    logic [1:0] 				ResultSrc, ImmSrc;
    logic [3:0] 				ALUControl;
    
-   controller c (Instr[6:0], Instr[14:12], Instr[30], Zero,
+   controller c (Instr[6:0], Instr[14:12], Instr[30], Zero, overflow, carry, negative
 		 ResultSrc, MemWrite, PCSrc,
 		 ALUSrc, RegWrite, Jump,
 		 ImmSrc, ALUControl);
    datapath dp (clk, reset, ResultSrc, PCSrc,
 		ALUSrc, RegWrite,
 		ImmSrc, ALUControl,
-		Zero, PC, Instr,
+		Zero, overflow, carry, negative, PC, Instr,
 		ALUResult, WriteData, ReadData);
    
 endmodule // riscvsingle
@@ -99,6 +98,9 @@ module controller (input  logic [6:0] op,
 		   input  logic [2:0] funct3,
 		   input  logic       funct7b5,
 		   input  logic       Zero,
+       input  logic       overflow,
+       input  logic       carry,
+       input  logic       negative,
 		   output logic [1:0] ResultSrc,
 		   output logic       MemWrite,
 		   output logic       PCSrc, ALUSrc,
@@ -135,7 +137,7 @@ module maindec (input  logic [6:0] op,
        7'b0000011: controls = 11'b1_00_1_0_01_0_00_0; // lw
        7'b0100011: controls = 11'b0_01_1_1_00_0_00_0; // sw
        7'b0110011: controls = 11'b1_xx_0_0_00_0_10_0; // R–type
-       7'b1100011: controls = 11'b1_10_1_0_00_1_01_0; // B-Type
+       7'b1100011: controls = 11'b1_10_0_0_00_1_01_0; // B-Type
        7'b0010011: controls = 11'b1_00_1_0_00_0_10_0; // I–type ALU
        7'b1101111: controls = 11'b1_11_0_0_10_0_00_1; // jal
        default: controls = 11'bx_xx_x_x_xx_x_xx_x; // ???
@@ -180,15 +182,6 @@ module aludec (input  logic       opb5,
         default: ALUControl = 4'bxxxx; // ???
 		endcase // case (funct3)
   endcase // case (ALUOp)
-  
-    // case(ALUOp)
-    // default:
-    //   case(funct3)
-    //     3'b000: ALUControl = 4'b1100; //beq
-    //     3'b001: ALUControl = 4'b1010; //bne
-    //   default: ALUControl = 4'bxxxx;
-    //   endcase
-    // endcase
 
    
 endmodule // aludec
@@ -200,6 +193,9 @@ module datapath (input  logic clk, reset,
 		 input  logic [1:0]  ImmSrc,
 		 input  logic [3:0]  ALUControl,
 		 output logic 	     Zero,
+     output logic        overflow,
+     output logic        carry,
+     output logic        negative,
 		 output logic [31:0] PC,
 		 input  logic [31:0] Instr,
 		 output logic [31:0] ALUResult, WriteData,
@@ -221,7 +217,7 @@ module datapath (input  logic clk, reset,
    extend  ext (Instr[31:7], ImmSrc, ImmExt);
    // ALU logic
    mux2 #(32)  srcbmux (WriteData, ImmExt, ALUSrc, SrcB);
-   alu  alu (SrcA, SrcB, ALUControl, ALUResult, Zero);
+   alu  alu (SrcA, SrcB, ALUControl, ALUResult, Zero, overflow, carry, negative);
    mux3 #(32) resultmux (ALUResult, ReadData, PCPlus4,ResultSrc, Result);
 
 endmodule // datapath
@@ -330,7 +326,11 @@ endmodule // dmem
 module alu (input  logic [31:0] a, b,
             input  logic [3:0] 	alucontrol,
             output logic [31:0] result,
-            output logic 	Zero);
+            output logic 	Zero,
+            output logic 	overflow,
+            output logic 	carry,
+            output logic 	negative,
+            );
   typedef int unsigned uint;
    logic [31:0] 	       condinvb, sum;
    logic 		       v;              // overflow
@@ -357,13 +357,14 @@ module alu (input  logic [31:0] a, b,
        //  4'b1000: result = sum[31] ^ vu;  // sltu
        4'b0111: result = a >> b;       // srl
        4'b1001: result = a >>> b;      // sra
-      //  4'b1100: result = zero;         // beq
-      //  4'b1010: result = ~zero;         // bne
        default: result = 32'bx;
      endcase
 
    assign Zero = (result == 32'b0);
    assign v = ~(alucontrol[0] ^ a[31] ^ b[31]) & (a[31] ^ sum[31]) & isAddSub;
+   assign overflow = v;
+   // question
+   assign carry = (a[31] + b[31]) & (~alucontrol[1] & ~alucontrol[0] | ~alucontrol[1] & alucontrol[0]); 
    // if a[31] = 0 and b[31] = 1: 1
    // if a[31] = 0 and b[31] = 0: 0
    // if a[31] = 1 and b[31] = 0: 0
