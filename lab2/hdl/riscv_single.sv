@@ -1,5 +1,4 @@
 // riscvsingle.sv
-// hello?
 // RISC-V single-cycle processor
 // From Section 7.6 of Digital Design & Computer Architecture
 // 27 April 2020
@@ -111,11 +110,23 @@ module controller (input  logic [6:0] op,
    
    logic [1:0] 			      ALUOp;
    logic 			      Branch;
+   logic            branch_taken;
    
    maindec md (op, ResultSrc, MemWrite, Branch,
 	       ALUSrc, RegWrite, Jump, ImmSrc, ALUOp);
    aludec ad (op[5], funct3, funct7b5, ALUOp, ALUControl);
-   assign PCSrc = Branch & (Zero ^ funct3[0]) | Jump;
+   always_comb
+      case(funct3)
+        3'b000: branch_taken = Zero;                   // beq
+        3'b001: branch_taken = ~Zero;                  // bne
+        3'b100: branch_taken = negative ^ overflow;    // blt
+        3'b101: branch_taken = ~(negative ^ overflow); // bge
+        3'b110: branch_taken = ~carry;                 // bltu
+        3'b111: branch_taken = carry;                  // bgeu
+        default: branch_taken = 32'bx;
+      endcase
+   assign PCSrc = (Branch & branch_taken) | Jump;
+
    
 endmodule // controller
 
@@ -337,9 +348,10 @@ module alu (input  logic [31:0] a, b,
    logic 		       v;              // overflow
    logic           vu;
    logic 		       isAddSub;       // true when is add or subtract operation
+   logic           carryOut;
 
    assign condinvb = alucontrol[0] ? ~b : b;
-   assign sum = a + condinvb + alucontrol[0];
+   assign {carryOut, sum} = a + condinvb + alucontrol[0];
    assign isAddSub = ~alucontrol[2] & ~alucontrol[1] |
                      ~alucontrol[1] & alucontrol[0];   
 
@@ -353,11 +365,11 @@ module alu (input  logic [31:0] a, b,
        4'b0101:  result = sum[31] ^ v; // slt   
        // if a >= b, sum[31] == 0. If a < b, sum[31] == 1.
        4'b0100: result = a ^ b;        // xor    
-       4'b0110: result = a << b;       // sll
+       4'b0110: result = a << b[4:0];       // sll
        // question
-       //  4'b1000: result = sum[31] ^ vu;  // sltu
-       4'b0111: result = a >> b;       // srl
-       4'b1001: result = a >>> b;      // sra
+       // 4'b1000: result = sum[31] ^ vu;   // sltu
+       4'b0111: result = a >> b[4:0];       // srl
+       4'b1001: result = a >>> b[4:0];      // sra
        default: result = 32'bx;
      endcase
 
@@ -365,12 +377,14 @@ module alu (input  logic [31:0] a, b,
    assign v = ~(alucontrol[0] ^ a[31] ^ b[31]) & (a[31] ^ sum[31]) & isAddSub;
    assign overflow = v;
    // question
-   assign carry = (a[31] + b[31]) & (~alucontrol[1] & ~alucontrol[0] | ~alucontrol[1] & alucontrol[0]); 
+  //  assign carry = (a[31] + b[31]) & (~alucontrol[1] & ~alucontrol[0] | ~alucontrol[1] & alucontrol[0]); 
    // if a[31] = 0 and b[31] = 1: 1
    // if a[31] = 0 and b[31] = 0: 0
    // if a[31] = 1 and b[31] = 0: 0
    // if a[31] = 1 and b[31] = 1: 0
-   assign vu = ~(alucontrol[0] ^ a[31] ^ b[31]) & (a[31] ^ sum[31]) & isAddSub;
+   assign carry = carryOut & ~alucontrol[1];
+   assign negative = result[31];
+  //  assign vu = ~(alucontrol[0] ^ a[31] ^ b[31]) & (a[31] ^ sum[31]) & isAddSub;
    
 endmodule // alu
 
