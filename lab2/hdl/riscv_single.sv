@@ -82,7 +82,7 @@ module riscvsingle (input  logic        clk, reset,
    logic [1:0] 				ResultSrc, ImmSrc;
    logic [3:0] 				ALUControl;
    
-   controller c (Instr[6:0], Instr[14:12], Instr[30], Zero, overflow, carry, negative
+   controller c (Instr[6:0], Instr[14:12], Instr[30], Zero, overflow, carry, negative,
 		 ResultSrc, MemWrite, PCSrc,
 		 ALUSrc, RegWrite, Jump,
 		 ImmSrc, ALUControl);
@@ -115,6 +115,7 @@ module controller (input  logic [6:0] op,
    maindec md (op, ResultSrc, MemWrite, Branch,
 	       ALUSrc, RegWrite, Jump, ImmSrc, ALUOp);
    aludec ad (op[5], funct3, funct7b5, ALUOp, ALUControl);
+   // determine PCSrc
    always_comb
       case(funct3)
         3'b000: branch_taken = Zero;                   // beq
@@ -123,7 +124,7 @@ module controller (input  logic [6:0] op,
         3'b101: branch_taken = ~(negative ^ overflow); // bge
         3'b110: branch_taken = ~carry;                 // bltu
         3'b111: branch_taken = carry;                  // bgeu
-        default: branch_taken = 32'bx;
+        default: branch_taken = 1'bx;
       endcase
    assign PCSrc = (Branch & branch_taken) | Jump;
 
@@ -132,9 +133,9 @@ endmodule // controller
 
 module maindec (input  logic [6:0] op,
 		output logic [1:0] ResultSrc,
-		output logic 	   MemWrite,
-		output logic 	   Branch, ALUSrc,
-		output logic 	   RegWrite, Jump,
+		output logic 	     MemWrite,
+		output logic 	     Branch, ALUSrc,
+		output logic 	     RegWrite, Jump,
 		output logic [1:0] ImmSrc,
 		output logic [1:0] ALUOp);
    
@@ -152,7 +153,7 @@ module maindec (input  logic [6:0] op,
        7'b1100011: controls = 11'b1_10_0_0_00_1_01_0; // B-Type
        7'b0010011: controls = 11'b1_00_1_0_00_0_10_0; // I–type ALU
        7'b1101111: controls = 11'b1_11_0_0_10_0_00_1; // jal
-       default: controls = 11'bx_xx_x_x_xx_x_xx_x; // ???
+       default:    controls = 11'bx_xx_x_x_xx_x_xx_x; // ???
      endcase // case (op)
    
 endmodule // maindec
@@ -174,26 +175,24 @@ module aludec (input  logic       opb5,
       2'b00: ALUControl = 4'b0000; // addition
       2'b01: ALUControl = 4'b0001; // subtraction
       default: 
-        // based on funct3, chooses a value for ALUControl
         case(funct3) // R–type or I–type ALU
         3'b000: if (RtypeSub)
-          ALUControl = 4'b0001; // sub
+          ALUControl = 4'b0001;       // sub
         else
-          ALUControl = 4'b0000; // add, addi
+          ALUControl = 4'b0000;       // add, addi
         3'b010: ALUControl = 4'b0101; // slt, slti
         3'b110: ALUControl = 4'b0011; // or, ori
         3'b111: ALUControl = 4'b0010; // and, andi
         3'b100: ALUControl = 4'b0100; // xor
         3'b001: ALUControl = 4'b0110; // sll
         3'b011: ALUControl = 4'b1000; // sltu
-        // lol
         3'b101: if (RtypeSub)
-          ALUControl = 4'b1001; // sra
+          ALUControl = 4'b1001;       // sra
         else
-          ALUControl = 4'b0111; // srl
-        default: ALUControl = 4'bxxxx; // ???
-		endcase // case (funct3)
-  endcase // case (ALUOp)
+          ALUControl = 4'b0111;       // srl
+        default: ALUControl = 4'bxxxx;
+		    endcase // case (funct3)
+    endcase // case (ALUOp)
 
    
 endmodule // aludec
@@ -341,8 +340,7 @@ module alu (input  logic [31:0] a, b,
             output logic 	Zero,
             output logic 	overflow,
             output logic 	carry,
-            output logic 	negative,
-            );
+            output logic 	negative);
   typedef int unsigned uint;
    logic [31:0] 	       condinvb, sum;
    logic 		       v;              // overflow
@@ -358,13 +356,13 @@ module alu (input  logic [31:0] a, b,
    always_comb
      case (alucontrol)
        // not funct3 codes, just ALUControl codes
-       4'b0000:  result = sum;         // add
-       4'b0001:  result = sum;         // subtract
-       4'b0010:  result = a & b;       // and
-       4'b0011:  result = a | b;       // or
-       4'b0101:  result = sum[31] ^ v; // slt   
+       4'b0000:  result = sum;              // add
+       4'b0001:  result = sum;              // subtract
+       4'b0010:  result = a & b;            // and
+       4'b0011:  result = a | b;            // or
+       4'b0101:  result = sum[31] ^ v;      // slt   
        // if a >= b, sum[31] == 0. If a < b, sum[31] == 1.
-       4'b0100: result = a ^ b;        // xor    
+       4'b0100: result = a ^ b;             // xor    
        4'b0110: result = a << b[4:0];       // sll
        // question
        // 4'b1000: result = sum[31] ^ vu;   // sltu
@@ -376,8 +374,6 @@ module alu (input  logic [31:0] a, b,
    assign Zero = (result == 32'b0);
    assign v = ~(alucontrol[0] ^ a[31] ^ b[31]) & (a[31] ^ sum[31]) & isAddSub;
    assign overflow = v;
-   // question
-  //  assign carry = (a[31] + b[31]) & (~alucontrol[1] & ~alucontrol[0] | ~alucontrol[1] & alucontrol[0]); 
    // if a[31] = 0 and b[31] = 1: 1
    // if a[31] = 0 and b[31] = 0: 0
    // if a[31] = 1 and b[31] = 0: 0
@@ -388,8 +384,8 @@ module alu (input  logic [31:0] a, b,
    
 endmodule // alu
 
-module regfile (input  logic        clk, 
-		input  logic 	    we3, 
+module regfile (input  logic clk, 
+		input  logic        we3, 
 		input  logic [4:0]  a1, a2, a3, 
 		input  logic [31:0] wd3, 
 		output logic [31:0] rd1, rd2);

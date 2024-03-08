@@ -32,6 +32,7 @@ R0
 R0
 R0
 R0
+R0
 !s11f MIXED_VERSIONS
 R0
 R0
@@ -108,25 +109,36 @@ R5
 n@_opt4
 R6
 R1
+T_opt5
+!s110 1709930882
+VembDS0<1bOTi:gP_H:f0l0
+R2
+=1-088fc31a7e33-65eb7982-165-3c68
+R3
+R4
+R5
+n@_opt5
+R6
+R1
 vadder
 Z7 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z8 !s110 1709591617
+Z8 !s110 1709932807
 !i10b 1
-!s100 GkEAO48^h<<i4>dN=?SM02
-IUbRleN;[9WjnK;T[TXWkh2
+!s100 T5LIl<D<YGCYI@?Aoe>TJ2
+IW=CAzVkdFi?c7AlaU36Vz1
 S1
 Z9 dC:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl
-Z10 w1709591366
+Z10 w1709930871
 Z11 8riscv_single.sv
 Z12 Friscv_single.sv
 !i122 0
-L0 219 6
+L0 236 6
 Z13 VDg1SIo80bB@j0V0VzS_@n1
 Z14 OL;L;2021.3;73
 r1
 !s85 0
 31
-Z15 !s108 1709591617.000000
+Z15 !s108 1709932807.000000
 !s107 riscv_single.sv|
 Z16 !s90 -reportprogress|300|riscv_single.sv|
 !i113 0
@@ -136,15 +148,15 @@ valu
 R7
 R8
 !i10b 1
-!s100 RzF4[b4`1XiDOFf7h7MGD2
-I_a[0DXJX1aLk[cB1WGTk22
+!s100 nzm5LQW[kOGYM>gm^P[A`3
+IeN=_znI8^PQ>V[`bm5j6@1
 S1
 R9
 R10
 R11
 R12
 !i122 0
-L0 320 42
+L0 337 49
 R13
 R14
 r1
@@ -160,15 +172,15 @@ valudec
 R7
 R8
 !i10b 1
-!s100 lXRl9Z7EcV[VMDA=?<ciS0
-I2QCQK8EVZFnn]ISUk1dTF2
+!s100 QOVWa5JnO754I;DR?NkPU3
+I7EE5bC0ODP7TIhGPWe=o]1
 S1
 R9
 R10
 R11
 R12
 !i122 0
-L0 145 40
+L0 161 38
 R13
 R14
 r1
@@ -184,15 +196,15 @@ vcontroller
 R7
 R8
 !i10b 1
-!s100 H7H^7l4g;3zX>dO]`U[zh2
-ImMgI8X<]6G72Q1T1_YRhj3
+!s100 XDL9:>nlX7TY>fGd7F]f63
+IGdFYzUK0XmE3lbJZKB<D_2
 S1
 R9
 R10
 R11
 R12
 !i122 0
-L0 97 20
+L0 97 36
 R13
 R14
 r1
@@ -208,15 +220,15 @@ vdatapath
 R7
 R8
 !i10b 1
-!s100 T60A]T9Pa@hFFOWQD_8GV0
-Ia:h;6[>`PlP<D?flJ^i0L1
+!s100 WPBz4SEfOYbkbAC2i?d:j3
+IDbBe5Wm=lOWPYn]Vgc4`T3
 S1
 R9
 R10
 R11
 R12
 !i122 0
-L0 186 32
+L0 200 35
 R13
 R14
 r1
@@ -232,15 +244,15 @@ vdmem
 R7
 R8
 !i10b 1
-!s100 UA50kbiiWzPF]S<H5XG=G2
-IjYjaIAbGG8a>Om`Y1^PFh0
+!s100 ]ez1XSm2PJ9h]<8LD;7Wi1
+I@:H:^LKl@BiCd<SVNBAX81
 S1
 R9
 R10
 R11
 R12
 !i122 0
-L0 308 11
+L0 325 11
 R13
 R14
 r1
@@ -256,15 +268,15 @@ vextend
 R7
 R8
 !i10b 1
-!s100 X`I:Ef1zleQ1Sc9I7FgBf2
-I65=F1;DdB8e@N<10H@F];1
+!s100 dImQ<`UXmToIaZdRo:UG_1
+IFj;n@=h39SEZGO:;4T2k^1
 S1
 R9
 R10
 R11
 R12
 !i122 0
-L0 226 18
+L0 243 18
 R13
 R14
 r1
@@ -280,15 +292,15 @@ vflopenr
 R7
 R8
 !i10b 1
-!s100 f@UJ4aK[8=G8PEYQEl29S1
-I]aGP2mHicJXAOEY1aU@W?0
+!s100 dneTN4`CJUT1Di>jYbhj=2
+Il3:?M7Vg3OOaGMf2A9b@W3
 S1
 R9
 R10
 R11
 R12
 !i122 0
-L0 256 10
+L0 273 10
 R13
 R14
 r1
@@ -304,15 +316,15 @@ vflopr
 R7
 R8
 !i10b 1
-!s100 08ie7k^fM<]Fjm<hDco]53
-IO[IhKJ?>D>O<>X_WVH:400
+!s100 _3LOZnVXm6kb>Mm8WNCA22
+IlnV5Bia7:IYzgGa?@n>2k0
 S1
 R9
 R10
 R11
 R12
 !i122 0
-L0 245 10
+L0 262 10
 R13
 R14
 r1
@@ -328,15 +340,15 @@ vimem
 R7
 R8
 !i10b 1
-!s100 ^941=mJTYF9OGe_]jDB<>2
-ILmIIdjPicXB_I3=0`=Zzb2
+!s100 hVH0RjN<BLoPe[GQ><<4D0
+Ii8zcOjz3Cnzh1B4iCLIz33
 S1
 R9
 R10
 R11
 R12
 !i122 0
-L0 299 8
+L0 316 8
 R13
 R14
 r1
@@ -352,15 +364,15 @@ vmaindec
 R7
 R8
 !i10b 1
-!s100 :c>dPm`l0ZiK`HfiTP61=1
-IllJfT]H[Ne8W_l7cUNb6b2
+!s100 JO2c74zHmohm2Qz;kYf7l0
+I`Pagm@4[g_n7c@BbLz3Fe0
 S1
 R9
 R10
 R11
 R12
 !i122 0
-L0 118 26
+L0 134 26
 R13
 R14
 r1
@@ -376,15 +388,15 @@ vmux2
 R7
 R8
 !i10b 1
-!s100 0MaZ>6n:WGLk`Q6GnzbAH2
-I01Xa0`0hbKjZ:8F:D@Z4V1
+!s100 FE@7<lk5T3TZ_QbhdYoRa1
+IVl6caV<F6=8MSY9=3BWdJ0
 S1
 R9
 R10
 R11
 R12
 !i122 0
-L0 267 8
+L0 284 8
 R13
 R14
 r1
@@ -400,15 +412,15 @@ vmux3
 R7
 R8
 !i10b 1
-!s100 RafZM^ZUK10IEKfAckB773
-I8hoNWLdElkzS:miM[k:`G2
+!s100 0DQBgNja5ljUDe@zgGjao2
+I@coMnmN:W>4I:gYNh1G:@1
 S1
 R9
 R10
 R11
 R12
 !i122 0
-L0 276 8
+L0 293 8
 R13
 R14
 r1
@@ -424,15 +436,15 @@ vregfile
 R7
 R8
 !i10b 1
-!s100 _XzMHd;PP^47EX5DjRd1_2
-ILThS`04QhjX>c5;cMJBA=3
+!s100 bH0FZoN4LEDXTG70jiNc^3
+IM3?i4=2H7dX84[g5[J>5<0
 S1
 R9
 R10
 R11
 R12
 !i122 0
-L0 363 20
+L0 387 20
 R13
 R14
 r1
@@ -448,8 +460,8 @@ vriscvsingle
 R7
 R8
 !i10b 1
-!s100 ggk7iV]^AhLgnClkCPYN01
-I7QTL]@ET`@CbDoZE_T?j50
+!s100 3eRmH4:Nz8S;_62HWom@62
+I;dT0?H<5HBAJd9Gl84z^P3
 S1
 R9
 R10
@@ -496,15 +508,15 @@ vtop
 R7
 R8
 !i10b 1
-!s100 ^51^]W1zZ]2mABLK3Z<UP1
-IR2C<_=DFlkjmY2;E=>^Pn0
+!s100 :WSTl_ZbSAFkZP3dic@z`2
+ISzEj0jmb^didm2AnRez]70
 S1
 R9
 R10
 R11
 R12
 !i122 0
-L0 285 13
+L0 302 13
 R13
 R14
 r1

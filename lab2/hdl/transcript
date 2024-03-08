@@ -16,10 +16,47 @@
 # ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is cothrut@CEAT-ENDV350-01.
 # ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is cothrut@CEAT-ENDV350-01.
 # ** Warning: (vdel-134) Unable to remove locked optimized design "_opt3".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt4".  Locker is Cory@CORYSGAMINGLAPT.
 # ** Warning: (vlib-34) Library already exists at "work".
 # Errors: 0, Warnings: 1
 # Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 16:32:36 on Mar 04,2024
+# Start time: 14:47:28 on Mar 08,2024
+# vlog -reportprogress 300 riscv_single.sv 
+# -- Compiling module testbench
+# -- Compiling module riscvsingle
+# ** Error: (vlog-13069) riscv_single.sv(86): near "ResultSrc": syntax error, unexpected IDENTIFIER, expecting ')'.
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module top
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# -- Compiling module regfile
+# End time: 14:47:28 on Mar 08,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/modeltech64_2021.3/win64/vlog failed.
+# Error in macro ././riscv_single.do line 30
+# C:/modeltech64_2021.3/win64/vlog failed.
+#     while executing
+# "vlog riscv_single.sv"
+do {.\riscv_single.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is jstine@sakuya.ecen.okstate.edu.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt3".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt4".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 14:48:01 on Mar 08,2024
 # vlog -reportprogress 300 riscv_single.sv 
 # -- Compiling module testbench
 # -- Compiling module riscvsingle
@@ -42,13 +79,13 @@
 # Top level modules:
 # 	testbench
 # 	flopenr
-# End time: 16:32:36 on Mar 04,2024, Elapsed time: 0:00:00
+# End time: 14:48:01 on Mar 08,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -debugdb -voptargs="+acc" work.testbench 
-# Start time: 16:32:36 on Mar 04,2024
+# Start time: 14:48:02 on Mar 08,2024
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Note: (vsim-8611) Generating debug db.
-# ** Note: (vopt-4301) Memory core inferred for signal 'RAM' width=32, depth=256, type=RAM at location riscv_single.sv:312
+# ** Note: (vopt-4301) Memory core inferred for signal 'RAM' width=32, depth=256, type=RAM at location riscv_single.sv:329
 # Loading sv_std.std
 # Loading work.testbench(fast)
 # Loading work.top(fast)
@@ -69,28 +106,29 @@
 # ** Note: (vsim-8900) Creating design debug database vsim.dbg.
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: cothrut  Hostname: CEAT-ENDV350-01  ProcessID: 18520
-#           Attempting to use alternate WLF file "./wlftsgv5wi".
+#           Attempting to use alternate WLF file "./wlft006nfs".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftsgv5wi
+#           Using alternate file: ./wlft006nfs
 # Simulation failed
 # ** Note: $stop    : riscv_single.sv(68)
-#    Time: 215 ns  Iteration: 1  Instance: /testbench
+#    Time: 225 ns  Iteration: 1  Instance: /testbench
 # Break in Module testbench at riscv_single.sv line 68
-do riscv_single.do
+do {.\riscv_single.do}
 # ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is jstine@sakuya.ecen.okstate.edu.
 # ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is cothrut@CEAT-ENDV350-01.
 # ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is cothrut@CEAT-ENDV350-01.
 # ** Warning: (vdel-134) Unable to remove locked optimized design "_opt3".  Locker is Cory@CORYSGAMINGLAPT.
 # ** Warning: (vdel-134) Unable to remove locked optimized design "_opt4".  Locker is Cory@CORYSGAMINGLAPT.
-# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt4/work_riscvsingle_fast_0.dbg".
-# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt4/work_top_fast_0.dbg".
-# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt4/__mti.dbg".
-# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt4".
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt5".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_riscvsingle_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_top_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5".
 # Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer".
 # ** Warning: (vlib-34) Library already exists at "work".
 # Errors: 0, Warnings: 1
 # Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 16:33:37 on Mar 04,2024
+# Start time: 14:59:02 on Mar 08,2024
 # vlog -reportprogress 300 riscv_single.sv 
 # -- Compiling module testbench
 # -- Compiling module riscvsingle
@@ -113,13 +151,13 @@ do riscv_single.do
 # Top level modules:
 # 	testbench
 # 	flopenr
-# End time: 16:33:37 on Mar 04,2024, Elapsed time: 0:00:00
+# End time: 14:59:02 on Mar 08,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# End time: 16:33:38 on Mar 04,2024, Elapsed time: 0:01:02
+# End time: 14:59:03 on Mar 08,2024, Elapsed time: 0:11:01
 # Errors: 0, Warnings: 2
 # vsim -debugdb -voptargs="+acc" work.testbench 
-# Start time: 16:33:38 on Mar 04,2024
-# ** Note: (vsim-8009) Loading existing optimized design _opt4
+# Start time: 14:59:03 on Mar 08,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt5
 # Loading sv_std.std
 # Loading work.testbench(fast)
 # Loading work.top(fast)
@@ -140,10 +178,802 @@ do riscv_single.do
 # ** Note: (vsim-8716) Reusing existing debug database vsim.dbg.
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: cothrut  Hostname: CEAT-ENDV350-01  ProcessID: 18520
-#           Attempting to use alternate WLF file "./wlftqbxfhn".
+#           Attempting to use alternate WLF file "./wlfteek3bn".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftqbxfhn
+#           Using alternate file: ./wlfteek3bn
 # Simulation failed
 # ** Note: $stop    : riscv_single.sv(68)
 #    Time: 225 ns  Iteration: 1  Instance: /testbench
+# Break in Module testbench at riscv_single.sv line 68
+do {.\riscv_single.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is jstine@sakuya.ecen.okstate.edu.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt3".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt4".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt5".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_riscvsingle_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_top_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 15:00:27 on Mar 08,2024
+# vlog -reportprogress 300 riscv_single.sv 
+# -- Compiling module testbench
+# -- Compiling module riscvsingle
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module top
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# -- Compiling module regfile
+# 
+# Top level modules:
+# 	testbench
+# 	flopenr
+# End time: 15:00:27 on Mar 08,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 15:00:28 on Mar 08,2024, Elapsed time: 0:01:25
+# Errors: 0, Warnings: 2
+# vsim -debugdb -voptargs="+acc" work.testbench 
+# Start time: 15:00:28 on Mar 08,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt5
+# Loading sv_std.std
+# Loading work.testbench(fast)
+# Loading work.top(fast)
+# Loading work.riscvsingle(fast)
+# Loading work.controller(fast)
+# Loading work.maindec(fast)
+# Loading work.aludec(fast)
+# Loading work.datapath(fast)
+# Loading work.flopr(fast)
+# Loading work.adder(fast)
+# Loading work.mux2(fast)
+# Loading work.regfile(fast)
+# Loading work.extend(fast)
+# Loading work.alu(fast)
+# Loading work.mux3(fast)
+# Loading work.imem(fast)
+# Loading work.dmem(fast)
+# ** Note: (vsim-8716) Reusing existing debug database vsim.dbg.
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: cothrut  Hostname: CEAT-ENDV350-01  ProcessID: 18520
+#           Attempting to use alternate WLF file "./wlfth7sjee".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlfth7sjee
+# Simulation failed
+# ** Note: $stop    : riscv_single.sv(68)
+#    Time: 225 ns  Iteration: 1  Instance: /testbench
+# Break in Module testbench at riscv_single.sv line 68
+do {.\riscv_single.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is jstine@sakuya.ecen.okstate.edu.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt3".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt4".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt5".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_riscvsingle_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_top_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 15:01:08 on Mar 08,2024
+# vlog -reportprogress 300 riscv_single.sv 
+# -- Compiling module testbench
+# -- Compiling module riscvsingle
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module top
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# -- Compiling module regfile
+# 
+# Top level modules:
+# 	testbench
+# 	flopenr
+# End time: 15:01:08 on Mar 08,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 15:01:09 on Mar 08,2024, Elapsed time: 0:00:41
+# Errors: 0, Warnings: 2
+# vsim -debugdb -voptargs="+acc" work.testbench 
+# Start time: 15:01:09 on Mar 08,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt5
+# Loading sv_std.std
+# Loading work.testbench(fast)
+# Loading work.top(fast)
+# Loading work.riscvsingle(fast)
+# Loading work.controller(fast)
+# Loading work.maindec(fast)
+# Loading work.aludec(fast)
+# Loading work.datapath(fast)
+# Loading work.flopr(fast)
+# Loading work.adder(fast)
+# Loading work.mux2(fast)
+# Loading work.regfile(fast)
+# Loading work.extend(fast)
+# Loading work.alu(fast)
+# Loading work.mux3(fast)
+# Loading work.imem(fast)
+# Loading work.dmem(fast)
+# ** Note: (vsim-8716) Reusing existing debug database vsim.dbg.
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: cothrut  Hostname: CEAT-ENDV350-01  ProcessID: 18520
+#           Attempting to use alternate WLF file "./wlftkin721".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftkin721
+# Simulation failed
+# ** Note: $stop    : riscv_single.sv(68)
+#    Time: 225 ns  Iteration: 1  Instance: /testbench
+# Break in Module testbench at riscv_single.sv line 68
+do {.\riscv_single.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is jstine@sakuya.ecen.okstate.edu.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt3".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt4".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt5".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_riscvsingle_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_top_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 15:03:12 on Mar 08,2024
+# vlog -reportprogress 300 riscv_single.sv 
+# -- Compiling module testbench
+# -- Compiling module riscvsingle
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module top
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# -- Compiling module regfile
+# 
+# Top level modules:
+# 	testbench
+# 	flopenr
+# End time: 15:03:12 on Mar 08,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 15:03:13 on Mar 08,2024, Elapsed time: 0:02:04
+# Errors: 0, Warnings: 2
+# vsim -debugdb -voptargs="+acc" work.testbench 
+# Start time: 15:03:13 on Mar 08,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt5
+# Loading sv_std.std
+# Loading work.testbench(fast)
+# Loading work.top(fast)
+# Loading work.riscvsingle(fast)
+# Loading work.controller(fast)
+# Loading work.maindec(fast)
+# Loading work.aludec(fast)
+# Loading work.datapath(fast)
+# Loading work.flopr(fast)
+# Loading work.adder(fast)
+# Loading work.mux2(fast)
+# Loading work.regfile(fast)
+# Loading work.extend(fast)
+# Loading work.alu(fast)
+# Loading work.mux3(fast)
+# Loading work.imem(fast)
+# Loading work.dmem(fast)
+# ** Note: (vsim-8716) Reusing existing debug database vsim.dbg.
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: cothrut  Hostname: CEAT-ENDV350-01  ProcessID: 18520
+#           Attempting to use alternate WLF file "./wlftaf9rr9".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftaf9rr9
+# Simulation failed
+# ** Note: $stop    : riscv_single.sv(68)
+#    Time: 235 ns  Iteration: 1  Instance: /testbench
+# Break in Module testbench at riscv_single.sv line 68
+do {.\riscv_single.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is jstine@sakuya.ecen.okstate.edu.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt3".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt4".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt5".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_riscvsingle_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_top_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 15:04:19 on Mar 08,2024
+# vlog -reportprogress 300 riscv_single.sv 
+# -- Compiling module testbench
+# -- Compiling module riscvsingle
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module top
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# -- Compiling module regfile
+# 
+# Top level modules:
+# 	testbench
+# 	flopenr
+# End time: 15:04:19 on Mar 08,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 15:04:20 on Mar 08,2024, Elapsed time: 0:01:07
+# Errors: 0, Warnings: 2
+# vsim -debugdb -voptargs="+acc" work.testbench 
+# Start time: 15:04:20 on Mar 08,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt5
+# Loading sv_std.std
+# Loading work.testbench(fast)
+# Loading work.top(fast)
+# Loading work.riscvsingle(fast)
+# Loading work.controller(fast)
+# Loading work.maindec(fast)
+# Loading work.aludec(fast)
+# Loading work.datapath(fast)
+# Loading work.flopr(fast)
+# Loading work.adder(fast)
+# Loading work.mux2(fast)
+# Loading work.regfile(fast)
+# Loading work.extend(fast)
+# Loading work.alu(fast)
+# Loading work.mux3(fast)
+# Loading work.imem(fast)
+# Loading work.dmem(fast)
+# ** Note: (vsim-8716) Reusing existing debug database vsim.dbg.
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: cothrut  Hostname: CEAT-ENDV350-01  ProcessID: 18520
+#           Attempting to use alternate WLF file "./wlftv7vgws".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftv7vgws
+# Simulation failed
+# ** Note: $stop    : riscv_single.sv(68)
+#    Time: 215 ns  Iteration: 1  Instance: /testbench
+# Break in Module testbench at riscv_single.sv line 68
+do {.\riscv_single.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is jstine@sakuya.ecen.okstate.edu.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt3".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt4".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt5".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_riscvsingle_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_top_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 15:05:05 on Mar 08,2024
+# vlog -reportprogress 300 riscv_single.sv 
+# -- Compiling module testbench
+# -- Compiling module riscvsingle
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module top
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# -- Compiling module regfile
+# 
+# Top level modules:
+# 	testbench
+# 	flopenr
+# End time: 15:05:05 on Mar 08,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 15:05:06 on Mar 08,2024, Elapsed time: 0:00:46
+# Errors: 0, Warnings: 2
+# vsim -debugdb -voptargs="+acc" work.testbench 
+# Start time: 15:05:06 on Mar 08,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt5
+# Loading sv_std.std
+# Loading work.testbench(fast)
+# Loading work.top(fast)
+# Loading work.riscvsingle(fast)
+# Loading work.controller(fast)
+# Loading work.maindec(fast)
+# Loading work.aludec(fast)
+# Loading work.datapath(fast)
+# Loading work.flopr(fast)
+# Loading work.adder(fast)
+# Loading work.mux2(fast)
+# Loading work.regfile(fast)
+# Loading work.extend(fast)
+# Loading work.alu(fast)
+# Loading work.mux3(fast)
+# Loading work.imem(fast)
+# Loading work.dmem(fast)
+# ** Note: (vsim-8716) Reusing existing debug database vsim.dbg.
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: cothrut  Hostname: CEAT-ENDV350-01  ProcessID: 18520
+#           Attempting to use alternate WLF file "./wlftk6kc6v".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftk6kc6v
+# Simulation failed
+# ** Note: $stop    : riscv_single.sv(68)
+#    Time: 215 ns  Iteration: 1  Instance: /testbench
+# Break in Module testbench at riscv_single.sv line 68
+do {.\riscv_single.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is jstine@sakuya.ecen.okstate.edu.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt3".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt4".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt5".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_riscvsingle_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_top_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 15:14:19 on Mar 08,2024
+# vlog -reportprogress 300 riscv_single.sv 
+# -- Compiling module testbench
+# -- Compiling module riscvsingle
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module top
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# -- Compiling module regfile
+# 
+# Top level modules:
+# 	testbench
+# 	flopenr
+# End time: 15:14:19 on Mar 08,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 15:14:20 on Mar 08,2024, Elapsed time: 0:09:14
+# Errors: 0, Warnings: 2
+# vsim -debugdb -voptargs="+acc" work.testbench 
+# Start time: 15:14:20 on Mar 08,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt5
+# Loading sv_std.std
+# Loading work.testbench(fast)
+# Loading work.top(fast)
+# Loading work.riscvsingle(fast)
+# Loading work.controller(fast)
+# Loading work.maindec(fast)
+# Loading work.aludec(fast)
+# Loading work.datapath(fast)
+# Loading work.flopr(fast)
+# Loading work.adder(fast)
+# Loading work.mux2(fast)
+# Loading work.regfile(fast)
+# Loading work.extend(fast)
+# Loading work.alu(fast)
+# Loading work.mux3(fast)
+# Loading work.imem(fast)
+# Loading work.dmem(fast)
+# ** Note: (vsim-8716) Reusing existing debug database vsim.dbg.
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: cothrut  Hostname: CEAT-ENDV350-01  ProcessID: 18520
+#           Attempting to use alternate WLF file "./wlftn2z7aj".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftn2z7aj
+# Simulation failed
+# ** Note: $stop    : riscv_single.sv(68)
+#    Time: 215 ns  Iteration: 1  Instance: /testbench
+# Break in Module testbench at riscv_single.sv line 68
+do {.\riscv_single.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is jstine@sakuya.ecen.okstate.edu.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt3".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt4".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt5".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_riscvsingle_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_top_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 15:16:26 on Mar 08,2024
+# vlog -reportprogress 300 riscv_single.sv 
+# -- Compiling module testbench
+# -- Compiling module riscvsingle
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module top
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# -- Compiling module regfile
+# 
+# Top level modules:
+# 	testbench
+# 	flopenr
+# End time: 15:16:26 on Mar 08,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 15:16:27 on Mar 08,2024, Elapsed time: 0:02:07
+# Errors: 0, Warnings: 2
+# vsim -debugdb -voptargs="+acc" work.testbench 
+# Start time: 15:16:27 on Mar 08,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt5
+# Loading sv_std.std
+# Loading work.testbench(fast)
+# Loading work.top(fast)
+# Loading work.riscvsingle(fast)
+# Loading work.controller(fast)
+# Loading work.maindec(fast)
+# Loading work.aludec(fast)
+# Loading work.datapath(fast)
+# Loading work.flopr(fast)
+# Loading work.adder(fast)
+# Loading work.mux2(fast)
+# Loading work.regfile(fast)
+# Loading work.extend(fast)
+# Loading work.alu(fast)
+# Loading work.mux3(fast)
+# Loading work.imem(fast)
+# Loading work.dmem(fast)
+# ** Note: (vsim-8716) Reusing existing debug database vsim.dbg.
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: cothrut  Hostname: CEAT-ENDV350-01  ProcessID: 18520
+#           Attempting to use alternate WLF file "./wlftv85g6b".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftv85g6b
+# Simulation failed
+# ** Note: $stop    : riscv_single.sv(68)
+#    Time: 235 ns  Iteration: 1  Instance: /testbench
+# Break in Module testbench at riscv_single.sv line 68
+do {.\riscv_single.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is jstine@sakuya.ecen.okstate.edu.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt3".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt4".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt5".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_riscvsingle_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_top_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 15:17:00 on Mar 08,2024
+# vlog -reportprogress 300 riscv_single.sv 
+# -- Compiling module testbench
+# -- Compiling module riscvsingle
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module top
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# -- Compiling module regfile
+# 
+# Top level modules:
+# 	testbench
+# 	flopenr
+# End time: 15:17:00 on Mar 08,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 15:17:01 on Mar 08,2024, Elapsed time: 0:00:34
+# Errors: 0, Warnings: 2
+# vsim -debugdb -voptargs="+acc" work.testbench 
+# Start time: 15:17:01 on Mar 08,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt5
+# Loading sv_std.std
+# Loading work.testbench(fast)
+# Loading work.top(fast)
+# Loading work.riscvsingle(fast)
+# Loading work.controller(fast)
+# Loading work.maindec(fast)
+# Loading work.aludec(fast)
+# Loading work.datapath(fast)
+# Loading work.flopr(fast)
+# Loading work.adder(fast)
+# Loading work.mux2(fast)
+# Loading work.regfile(fast)
+# Loading work.extend(fast)
+# Loading work.alu(fast)
+# Loading work.mux3(fast)
+# Loading work.imem(fast)
+# Loading work.dmem(fast)
+# ** Note: (vsim-8716) Reusing existing debug database vsim.dbg.
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: cothrut  Hostname: CEAT-ENDV350-01  ProcessID: 18520
+#           Attempting to use alternate WLF file "./wlftdfgxh2".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftdfgxh2
+# Simulation failed
+# ** Note: $stop    : riscv_single.sv(68)
+#    Time: 235 ns  Iteration: 1  Instance: /testbench
+# Break in Module testbench at riscv_single.sv line 68
+do {.\riscv_single.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is jstine@sakuya.ecen.okstate.edu.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt3".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt4".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt5".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_riscvsingle_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_top_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 15:18:42 on Mar 08,2024
+# vlog -reportprogress 300 riscv_single.sv 
+# -- Compiling module testbench
+# -- Compiling module riscvsingle
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module top
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# -- Compiling module regfile
+# 
+# Top level modules:
+# 	testbench
+# 	flopenr
+# End time: 15:18:42 on Mar 08,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 15:18:43 on Mar 08,2024, Elapsed time: 0:01:42
+# Errors: 0, Warnings: 2
+# vsim -debugdb -voptargs="+acc" work.testbench 
+# Start time: 15:18:43 on Mar 08,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt5
+# Loading sv_std.std
+# Loading work.testbench(fast)
+# Loading work.top(fast)
+# Loading work.riscvsingle(fast)
+# Loading work.controller(fast)
+# Loading work.maindec(fast)
+# Loading work.aludec(fast)
+# Loading work.datapath(fast)
+# Loading work.flopr(fast)
+# Loading work.adder(fast)
+# Loading work.mux2(fast)
+# Loading work.regfile(fast)
+# Loading work.extend(fast)
+# Loading work.alu(fast)
+# Loading work.mux3(fast)
+# Loading work.imem(fast)
+# Loading work.dmem(fast)
+# ** Note: (vsim-8716) Reusing existing debug database vsim.dbg.
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: cothrut  Hostname: CEAT-ENDV350-01  ProcessID: 18520
+#           Attempting to use alternate WLF file "./wlft0cgkc6".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft0cgkc6
+# Simulation failed
+# ** Note: $stop    : riscv_single.sv(68)
+#    Time: 105 ns  Iteration: 1  Instance: /testbench
+# Break in Module testbench at riscv_single.sv line 68
+do {.\riscv_single.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is jstine@sakuya.ecen.okstate.edu.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt3".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt4".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt5".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_riscvsingle_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_top_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 15:19:28 on Mar 08,2024
+# vlog -reportprogress 300 riscv_single.sv 
+# -- Compiling module testbench
+# -- Compiling module riscvsingle
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module top
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# -- Compiling module regfile
+# 
+# Top level modules:
+# 	testbench
+# 	flopenr
+# End time: 15:19:28 on Mar 08,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 15:19:29 on Mar 08,2024, Elapsed time: 0:00:46
+# Errors: 0, Warnings: 2
+# vsim -debugdb -voptargs="+acc" work.testbench 
+# Start time: 15:19:30 on Mar 08,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt5
+# Loading sv_std.std
+# Loading work.testbench(fast)
+# Loading work.top(fast)
+# Loading work.riscvsingle(fast)
+# Loading work.controller(fast)
+# Loading work.maindec(fast)
+# Loading work.aludec(fast)
+# Loading work.datapath(fast)
+# Loading work.flopr(fast)
+# Loading work.adder(fast)
+# Loading work.mux2(fast)
+# Loading work.regfile(fast)
+# Loading work.extend(fast)
+# Loading work.alu(fast)
+# Loading work.mux3(fast)
+# Loading work.imem(fast)
+# Loading work.dmem(fast)
+# ** Note: (vsim-8716) Reusing existing debug database vsim.dbg.
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: cothrut  Hostname: CEAT-ENDV350-01  ProcessID: 18520
+#           Attempting to use alternate WLF file "./wlftr970gh".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftr970gh
+# Simulation failed
+# ** Note: $stop    : riscv_single.sv(68)
+#    Time: 235 ns  Iteration: 1  Instance: /testbench
+# Break in Module testbench at riscv_single.sv line 68
+do {.\riscv_single.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is jstine@sakuya.ecen.okstate.edu.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is cothrut@CEAT-ENDV350-01.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt3".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt4".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt5".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_riscvsingle_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/work_top_fast_0.dbg".
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer/#64_opt5".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab2/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 15:20:07 on Mar 08,2024
+# vlog -reportprogress 300 riscv_single.sv 
+# -- Compiling module testbench
+# -- Compiling module riscvsingle
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module top
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# -- Compiling module regfile
+# 
+# Top level modules:
+# 	testbench
+# 	flopenr
+# End time: 15:20:07 on Mar 08,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 15:20:09 on Mar 08,2024, Elapsed time: 0:00:39
+# Errors: 0, Warnings: 2
+# vsim -debugdb -voptargs="+acc" work.testbench 
+# Start time: 15:20:09 on Mar 08,2024
+# ** Note: (vsim-8009) Loading existing optimized design _opt5
+# Loading sv_std.std
+# Loading work.testbench(fast)
+# Loading work.top(fast)
+# Loading work.riscvsingle(fast)
+# Loading work.controller(fast)
+# Loading work.maindec(fast)
+# Loading work.aludec(fast)
+# Loading work.datapath(fast)
+# Loading work.flopr(fast)
+# Loading work.adder(fast)
+# Loading work.mux2(fast)
+# Loading work.regfile(fast)
+# Loading work.extend(fast)
+# Loading work.alu(fast)
+# Loading work.mux3(fast)
+# Loading work.imem(fast)
+# Loading work.dmem(fast)
+# ** Note: (vsim-8716) Reusing existing debug database vsim.dbg.
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: cothrut  Hostname: CEAT-ENDV350-01  ProcessID: 18520
+#           Attempting to use alternate WLF file "./wlftqs5man".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftqs5man
+# Simulation failed
+# ** Note: $stop    : riscv_single.sv(68)
+#    Time: 235 ns  Iteration: 1  Instance: /testbench
 # Break in Module testbench at riscv_single.sv line 68
