@@ -90,7 +90,7 @@ module riscvsingle (input  logic        clk, reset,
 		ALUSrc, RegWrite,
 		ImmSrc, ALUControl,
 		Zero, overflow, carry, negative, PC, Instr,
-		ALUResult, WriteData, ReadData);
+		ALUResult, WriteData, ReadData, Instr[14:12]);
    
 endmodule // riscvsingle
 
@@ -210,12 +210,16 @@ module datapath (input  logic clk, reset,
 		 output logic [31:0] PC,
 		 input  logic [31:0] Instr,
 		 output logic [31:0] ALUResult, WriteData,
-		 input  logic [31:0] ReadData);
+		 input  logic [31:0] ReadData,
+     input  logic [2:0]  funct3);
    
    logic [31:0] 		     PCNext, PCPlus4, PCTarget;
    logic [31:0] 		     ImmExt;
    logic [31:0] 		     SrcA, SrcB;
    logic [31:0] 		     Result;
+   logic [7:0]           LBResult;
+   logic [15:0]          LHResult;
+   logic [31:0]          mid;
    
    // next PC logic
    flopr #(32) pcreg (clk, reset, PCNext, PC);
@@ -229,7 +233,21 @@ module datapath (input  logic clk, reset,
    // ALU logic
    mux2 #(32)  srcbmux (WriteData, ImmExt, ALUSrc, SrcB);
    alu  alu (SrcA, SrcB, ALUControl, ALUResult, Zero, overflow, carry, negative);
-   mux3 #(32) resultmux (ALUResult, ReadData, PCPlus4,ResultSrc, Result);
+   mux3 #(32) resultmux (ALUResult, mid, PCPlus4, ResultSrc, Result);
+   // for load I-type instructions
+   mux4 #(8) lbmux (ReadData[7:0], ReadData[15:8], ReadData[23:16], ReadData[31:24], ALUResult[1:0], LBResult);
+   mux2 #(16) lhmux (ReadData[15:0], ReadData[31:16], ALUResult[1], LHResult);
+
+   always_comb
+    case(funct3)
+    // question: set Result to lbmux ouptut?
+      3'b000: mid = {{24{LBResult[7]}}, LBResult};  // lb
+      3'b100: mid = {24'b0, LBResult};              // lbu
+      3'b001: mid = {{16{LHResult[15]}}, LHResult}; // lh
+      3'b101: mid = {16'b0, LHResult};              // lhu
+      3'b010: mid = ReadData;                       // lw
+      default: mid = 32'bx;
+    endcase
 
 endmodule // datapath
 
@@ -299,6 +317,15 @@ module mux3 #(parameter WIDTH = 8)
    
 endmodule // mux3
 
+module mux4 #(parameter WIDTH = 8)
+    (input logic [WIDTH-1:0] d0, d1, d2, d3,
+     input logic [1:0] s,
+     output logic [WIDTH-1:0] y);
+
+  assign y = s[1] ? (s[0] ? d3 : d2) : (s[0] ? d1 : d0);
+
+endmodule // mux4
+
 module top (input  logic        clk, reset,
 	    output logic [31:0] WriteData, DataAdr,
 	    output logic 	MemWrite);
@@ -322,13 +349,15 @@ module imem (input  logic [31:0] a,
    
 endmodule // imem
 
-module dmem (input  logic        clk, we,
+module dmem (input  logic  clk, we,
 	     input  logic [31:0] a, wd,
 	     output logic [31:0] rd);
    
    logic [31:0] 		 RAM[255:0];
-   
+   logic [2:0]       rdata;
+
    assign rd = RAM[a[31:2]]; // word aligned
+
    always_ff @(posedge clk)
      if (we) RAM[a[31:2]] <= wd;
    
