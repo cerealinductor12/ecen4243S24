@@ -17,10 +17,11 @@
 # ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is cothrut@CEAT-ENDV350-01.
 # ** Warning: (vdel-134) Unable to remove locked optimized design "_opt3".  Locker is Cory@CORYSGAMINGLAPT.
 # ** Warning: (vdel-134) Unable to remove locked optimized design "_opt4".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt5".  Locker is Cory@CORYSGAMINGLAPT.
 # ** Warning: (vlib-34) Library already exists at "work".
 # Errors: 0, Warnings: 1
 # Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 17:34:22 on Mar 08,2024
+# Start time: 16:21:02 on Mar 11,2024
 # vlog -reportprogress 300 riscv_single.sv 
 # -- Compiling module testbench
 # -- Compiling module riscvsingle
@@ -44,13 +45,13 @@
 # Top level modules:
 # 	testbench
 # 	flopenr
-# End time: 17:34:22 on Mar 08,2024, Elapsed time: 0:00:00
+# End time: 16:21:02 on Mar 11,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -debugdb -voptargs="+acc" work.testbench 
-# Start time: 17:34:22 on Mar 08,2024
+# Start time: 16:21:02 on Mar 11,2024
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Note: (vsim-8611) Generating debug db.
-# ** Note: (vopt-4301) Memory core inferred for signal 'RAM' width=32, depth=256, type=RAM at location riscv_single.sv:356
+# ** Note: (vopt-4301) Memory core inferred for signal 'RAM' width=32, depth=256, type=RAM at location riscv_single.sv:359
 # Loading sv_std.std
 # Loading work.testbench(fast)
 # Loading work.top(fast)
@@ -73,12 +74,6 @@
 # ** Note: (vsim-8900) Creating design debug database vsim.dbg.
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: cothrut  Hostname: CEAT-ENDV350-01  ProcessID: 18520
-#           Attempting to use alternate WLF file "./wlft6i18rj".
+#           Attempting to use alternate WLF file "./wlft2qth4j".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlft6i18rj
-# Simulation failed
-# ** Note: $stop    : riscv_single.sv(68)
-#    Time: 275 ns  Iteration: 1  Instance: /testbench
-# Break in Module testbench at riscv_single.sv line 68
-add wave -position insertpoint  \
-sim:/testbench/dut/rv32single/dp/mid
+#           Using alternate file: ./wlft2qth4j

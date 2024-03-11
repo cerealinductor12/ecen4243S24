@@ -90,7 +90,7 @@ module riscvsingle (input  logic        clk, reset,
 		ALUSrc, RegWrite,
 		ImmSrc, ALUControl,
 		Zero, overflow, carry, negative, PC, Instr,
-		ALUResult, WriteData, ReadData, Instr[14:12]);
+		ALUResult, WriteData, ReadData, Instr[14:12], Instr[6:0]);
    
 endmodule // riscvsingle
 
@@ -211,7 +211,8 @@ module datapath (input  logic clk, reset,
 		 input  logic [31:0] Instr,
 		 output logic [31:0] ALUResult, WriteData,
 		 input  logic [31:0] ReadData,
-     input  logic [2:0]  funct3);
+     input  logic [2:0]  funct3
+     input  logic [6:0]  opcode);
    
    logic [31:0] 		     PCNext, PCPlus4, PCTarget;
    logic [31:0] 		     ImmExt;
@@ -220,6 +221,7 @@ module datapath (input  logic clk, reset,
    logic [7:0]           LBResult;
    logic [15:0]          LHResult;
    logic [31:0]          mid;
+   logic [31:0]          SBResult, SHResult;
    
    // next PC logic
    flopr #(32) pcreg (clk, reset, PCNext, PC);
@@ -237,17 +239,33 @@ module datapath (input  logic clk, reset,
    // for load I-type instructions
    mux4 #(8) lbmux (ReadData[7:0], ReadData[15:8], ReadData[23:16], ReadData[31:24], ALUResult[1:0], LBResult);
    mux2 #(16) lhmux (ReadData[15:0], ReadData[31:16], ALUResult[1], LHResult);
+   mux4 #(32) sbmux ({ReadData[31:8], WriteData[7:0]}, {ReadData[31:16], WriteData[7:0], ReadData[7:0]},
+                     {ReadData[31:24], WriteData[7:0], ReadData[15:0]}, {WriteData[7:0], ReadData[23:0]}, 
+                      ALUResult[1:0], SBResult);
+   mux2 #(32) shmux ({ReadData[31:16], WriteData[15:0]}, {WriteData[15:0], ReadData[15:0]},
+                      ALUResult[1], SHResult;);
 
    always_comb
-    case(funct3)
-    // question: set Result to lbmux ouptut?
-      3'b000: mid = {{24{LBResult[7]}}, LBResult};  // lb
-      3'b100: mid = {24'b0, LBResult};              // lbu
-      3'b001: mid = {{16{LHResult[15]}}, LHResult}; // lh
-      3'b101: mid = {16'b0, LHResult};              // lhu
-      3'b010: mid = ReadData;                       // lw
-      default: mid = 32'bx;
+    case(opcode)
+      7'b0000011: // loads
+      case(funct3)
+        3'b000: mid = {{24{LBResult[7]}}, LBResult};  // lb
+        3'b100: mid = {24'b0, LBResult};              // lbu
+        3'b001: mid = {{16{LHResult[15]}}, LHResult}; // lh
+        3'b101: mid = {16'b0, LHResult};              // lhu
+        3'b010: mid = ReadData;                       // lw
+        default: mid = 32'bx;
+      endcase
+      default: // stores
+      case(funct3)
+        3'b000: WriteData = SBResult;
+        3'b001: WriteData = SHResult;
+        default: WriteData = WriteData;
+      endcase
     endcase
+
+  // question: why is there wd for non-store instructions in our waveform?
+
 
 endmodule // datapath
 
