@@ -211,7 +211,7 @@ module datapath (input  logic clk, reset,
 		 input  logic [31:0] Instr,
 		 output logic [31:0] ALUResult, WriteData,
 		 input  logic [31:0] ReadData,
-     input  logic [2:0]  funct3
+     input  logic [2:0]  funct3,
      input  logic [6:0]  opcode);
    
    logic [31:0] 		     PCNext, PCPlus4, PCTarget;
@@ -220,8 +220,9 @@ module datapath (input  logic clk, reset,
    logic [31:0] 		     Result;
    logic [7:0]           LBResult;
    logic [15:0]          LHResult;
-   logic [31:0]          mid;
+   logic [31:0]          mid; // mid for load
    logic [31:0]          SBResult, SHResult;
+   logic [31:0]          RD2;
    
    // next PC logic
    flopr #(32) pcreg (clk, reset, PCNext, PC);
@@ -230,20 +231,20 @@ module datapath (input  logic clk, reset,
    mux2 #(32)  pcmux (PCPlus4, PCTarget, PCSrc, PCNext);
    // register file logic
    regfile  rf (clk, RegWrite, Instr[19:15], Instr[24:20],
-	       Instr[11:7], Result, SrcA, WriteData);
+	       Instr[11:7], Result, SrcA, RD2);
    extend  ext (Instr[31:7], ImmSrc, ImmExt);
    // ALU logic
-   mux2 #(32)  srcbmux (WriteData, ImmExt, ALUSrc, SrcB);
+   mux2 #(32)  srcbmux (RD2, ImmExt, ALUSrc, SrcB);
    alu  alu (SrcA, SrcB, ALUControl, ALUResult, Zero, overflow, carry, negative);
-   mux3 #(32) resultmux (ALUResult, mid, PCPlus4, ResultSrc, Result);
+   mux3 #(32) resultmux (ALUResult, mid, PCPlus4, ResultSrc, Result); // replaced ReadData with mid
    // for load I-type instructions
    mux4 #(8) lbmux (ReadData[7:0], ReadData[15:8], ReadData[23:16], ReadData[31:24], ALUResult[1:0], LBResult);
    mux2 #(16) lhmux (ReadData[15:0], ReadData[31:16], ALUResult[1], LHResult);
-   mux4 #(32) sbmux ({ReadData[31:8], WriteData[7:0]}, {ReadData[31:16], WriteData[7:0], ReadData[7:0]},
-                     {ReadData[31:24], WriteData[7:0], ReadData[15:0]}, {WriteData[7:0], ReadData[23:0]}, 
+   mux4 #(32) sbmux ({ReadData[31:8], RD2[7:0]}, {ReadData[31:16], RD2[7:0], ReadData[7:0]},
+                     {ReadData[31:24], RD2[7:0], ReadData[15:0]}, {RD2[7:0], ReadData[23:0]}, 
                       ALUResult[1:0], SBResult);
-   mux2 #(32) shmux ({ReadData[31:16], WriteData[15:0]}, {WriteData[15:0], ReadData[15:0]},
-                      ALUResult[1], SHResult;);
+   mux2 #(32) shmux ({ReadData[31:16], RD2[15:0]}, {RD2[15:0], ReadData[15:0]},
+                      ALUResult[1], SHResult);
 
    always_comb
     case(opcode)
@@ -258,9 +259,10 @@ module datapath (input  logic clk, reset,
       endcase
       default: // stores
       case(funct3)
-        3'b000: WriteData = SBResult;
-        3'b001: WriteData = SHResult;
-        default: WriteData = WriteData;
+        3'b000: WriteData = SBResult;  // sb
+        3'b001: WriteData = SHResult;  // sh
+        3'b010: WriteData = RD2; // sw
+        default: WriteData = 32'bx;
       endcase
     endcase
 
