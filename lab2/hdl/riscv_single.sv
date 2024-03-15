@@ -257,7 +257,7 @@ module datapath (input  logic clk, reset,
         3'b010: mid = ReadData;                       // lw
         default: mid = 32'bx;
       endcase
-      default: // stores
+      7'b0100011: // stores
       case(funct3)
         3'b000: WriteData = SBResult;  // sb
         3'b001: WriteData = SHResult;  // sh
@@ -265,9 +265,6 @@ module datapath (input  logic clk, reset,
         default: WriteData = 32'bx;
       endcase
     endcase
-
-  // question: why is there wd for non-store instructions in our waveform?
-
 
 endmodule // datapath
 
@@ -404,17 +401,13 @@ module alu (input  logic [31:0] a, b,
 
    always_comb
      case (alucontrol)
-       // not funct3 codes, just ALUControl codes
        4'b0000:  result = sum;              // add
        4'b0001:  result = sum;              // subtract
        4'b0010:  result = a & b;            // and
        4'b0011:  result = a | b;            // or
        4'b0101:  result = sum[31] ^ v;      // slt   
-       // if a >= b, sum[31] == 0. If a < b, sum[31] == 1.
        4'b0100: result = a ^ b;             // xor    
        4'b0110: result = a << b[4:0];       // sll
-       // question
-       // 4'b1000: result = sum[31] ^ vu;   // sltu
        4'b0111: result = a >> b[4:0];       // srl
        4'b1001: result = a >>> b[4:0];      // sra
        default: result = 32'bx;
@@ -423,13 +416,8 @@ module alu (input  logic [31:0] a, b,
    assign Zero = (result == 32'b0);
    assign v = ~(alucontrol[0] ^ a[31] ^ b[31]) & (a[31] ^ sum[31]) & isAddSub;
    assign overflow = v;
-   // if a[31] = 0 and b[31] = 1: 1
-   // if a[31] = 0 and b[31] = 0: 0
-   // if a[31] = 1 and b[31] = 0: 0
-   // if a[31] = 1 and b[31] = 1: 0
    assign carry = carryOut & ~alucontrol[1];
    assign negative = result[31];
-  //  assign vu = ~(alucontrol[0] ^ a[31] ^ b[31]) & (a[31] ^ sum[31]) & isAddSub;
    
 endmodule // alu
 
