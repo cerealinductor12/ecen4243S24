@@ -224,7 +224,7 @@ module controller(input  logic		 clk, reset,
                             {RegWriteE, ResultSrcE, MemWriteE, JumpE, BranchE, ALUControlE, ALUSrcE});
 
   //  assign PCSrcE = (BranchE & ZeroE) | JumpE;
-  always_comb
+  always_comb begin
       case(funct3D)
         3'b000: branch_taken = ZeroE;                    // beq
         3'b001: branch_taken = ~ZeroE;                   // bne
@@ -235,14 +235,9 @@ module controller(input  logic		 clk, reset,
         default: branch_taken = 1'bx;
       endcase
    assign PCSrcE = (BranchE & branch_taken) | JumpE;
-   always_comb
-      case(PCSrcE)
-        1'b1: flushed = 1;
-        1'b0: flushed = 0;
-      endcase
-   assign FlushD = flushed;
-   assign FlushE = flushed;
+  end
    assign ResultSrcEb0 = ResultSrcE[0];
+  end
    
    // Memory stage pipeline control register
    flopr #(4) controlregM(clk, reset,
@@ -598,4 +593,3 @@ module alu(input  logic [31:0] a, b,
    assign negative = result[31];
    
 endmodule
-
