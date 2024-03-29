@@ -212,6 +212,7 @@ module controller(input  logic		 clk, reset,
    logic [3:0] 			     ALUControlD;
    logic 			     ALUSrcD;
    logic           branch_taken, flushed;
+   logic [2:0]     funct3E;
    
    // Decode stage logic
    maindec md(opD, ResultSrcD, MemWriteD, BranchD,
@@ -219,13 +220,13 @@ module controller(input  logic		 clk, reset,
    aludec  ad(opD[5], funct3D, funct7b5D, ALUOpD, ALUControlD);
    
    // Execute stage pipeline control register and logic
-   floprc #(11) controlregE(clk, reset, FlushE,
-                            {RegWriteD, ResultSrcD, MemWriteD, JumpD, BranchD, ALUControlD, ALUSrcD},
-                            {RegWriteE, ResultSrcE, MemWriteE, JumpE, BranchE, ALUControlE, ALUSrcE});
+   floprc #(14) controlregE(clk, reset, FlushE,  // was width 11
+                            {RegWriteD, ResultSrcD, MemWriteD, JumpD, BranchD, ALUControlD, ALUSrcD, funct3D}, // added funct3
+                            {RegWriteE, ResultSrcE, MemWriteE, JumpE, BranchE, ALUControlE, ALUSrcE, funct3E});
 
   //  assign PCSrcE = (BranchE & ZeroE) | JumpE;
   always_comb begin
-      case(funct3D)
+      case(funct3E)
         3'b000: branch_taken = ZeroE;                    // beq
         3'b001: branch_taken = ~ZeroE;                   // bne
         3'b100: branch_taken = NegativeE ^ OverflowE;    // blt
@@ -237,7 +238,6 @@ module controller(input  logic		 clk, reset,
    assign PCSrcE = (BranchE & branch_taken) | JumpE;
   end
    assign ResultSrcEb0 = ResultSrcE[0];
-  end
    
    // Memory stage pipeline control register
    flopr #(4) controlregM(clk, reset,
@@ -311,7 +311,7 @@ module datapath(input logic clk, reset,
                 input logic [31:0]  InstrF,
                 // Decode stage signals
                 output logic [6:0]  opD,
-                output logic [2:0]  funct3D, 
+                output logic [2:0]  funct3D,
                 output logic 	    funct7b5D,
                 input logic 	    StallD, FlushD,
                 input logic [1:0]   ImmSrcD,
