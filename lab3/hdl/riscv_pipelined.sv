@@ -211,7 +211,7 @@ module controller(input  logic		 clk, reset,
    logic [1:0] 			     ALUOpD;
    logic [3:0] 			     ALUControlD;
    logic 			     ALUSrcD;
-   logic           branch_taken, flushed;
+   logic           branch_taken;
    logic [2:0]     funct3E;
    
    // Decode stage logic
@@ -235,6 +235,7 @@ module controller(input  logic		 clk, reset,
         3'b111: branch_taken = CarryE;                   // bgeu
         default: branch_taken = 1'bx;
       endcase
+      // broken
    assign PCSrcE = (BranchE & branch_taken) | JumpE;
   end
    assign ResultSrcEb0 = ResultSrcE[0];

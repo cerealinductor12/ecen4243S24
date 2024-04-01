@@ -12,8 +12,11 @@
 # //  18 U.S.C. Section 1905.
 # //
 # do {.\riscv_pipelined.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
 # Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 17:02:23 on Mar 29,2024
+# Start time: 17:05:47 on Apr 01,2024
 # vlog -reportprogress 300 riscv_pipelined.sv 
 # -- Compiling module testbench
 # -- Compiling module top
@@ -38,13 +41,13 @@
 # 
 # Top level modules:
 # 	testbench
-# End time: 17:02:23 on Mar 29,2024, Elapsed time: 0:00:00
+# End time: 17:05:47 on Apr 01,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -debugdb -voptargs="+acc" work.testbench 
-# Start time: 17:02:23 on Mar 29,2024
+# Start time: 17:05:47 on Apr 01,2024
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Note: (vsim-8611) Generating debug db.
-# ** Note: (vopt-4301) Memory core inferred for signal 'RAM' width=32, depth=256, type=RAM at location riscv_pipelined.sv:552
+# ** Note: (vopt-4301) Memory core inferred for signal 'RAM' width=32, depth=256, type=RAM at location riscv_pipelined.sv:553
 # Loading sv_std.std
 # Loading work.testbench(fast)
 # Loading work.top(fast)
@@ -71,6 +74,11 @@
 # Loading work.dmem(fast)
 # ** Note: (vsim-8900) Creating design debug database vsim.dbg.
 # ** Error: (vsim-8357) Internal debugDB error id:ct1  ret:1 table context_tbl already exists
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Cory  Hostname: CORYSGAMINGLAPT  ProcessID: 18404
+#           Attempting to use alternate WLF file "./wlft3keesc".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft3keesc
 # Simulation failed
 # ** Note: $stop    : riscv_pipelined.sv(120)
 #    Time: 255 ns  Iteration: 1  Instance: /testbench
