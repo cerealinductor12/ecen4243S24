@@ -92,7 +92,7 @@ module testbench();
    initial
      begin
 	string memfilename;
-        memfilename = {"../../lab1/testing/beq.memfile"};
+        memfilename = {"../../lab1/testing/bne.memfile"};
 	$readmemh(memfilename, dut.imem.RAM);
      end
    

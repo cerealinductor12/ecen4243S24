@@ -36,6 +36,7 @@ label3_test02:
 
 test03:
   li a1, 3
+  nop
   li x1, 0xffffffff
   li x2, 0x00000001
   bne x1, x2, label2_test03
