@@ -14,6 +14,10 @@ test01:
   li x2, 0x00000000
   beq x1, x2, label2_test01
   bne x0, a1, fail
+  nop
+  nop
+  nop
+  nop
 label1_test01:
   bne x0, a1, label3_test01
 label2_test01:

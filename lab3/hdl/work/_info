@@ -9,6 +9,9 @@ R0
 R0
 R0
 R0
+R0
+R0
+R0
 !s11f vlog 2021.3 2021.07, Jul 13 2021
 13
 !s112 1.1
@@ -38,15 +41,26 @@ R4
 R5
 n@_opt1
 R6
+R1
+T_opt2
+!s110 1712172995
+VP6BZPN6VHf?@e]5zR@[2:1
+R2
+=1-088fc31a7e33-660dafc2-31c-2664
+R3
+R4
+R5
+n@_opt2
+R6
 vadder
 Z7 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z8 !s110 1712009147
+Z8 !s110 1712172993
 !i10b 1
 !s100 mNO1Tl5fFk6b=kJWZz4jZ2
 I<gC4_bhSBMRf`N2G:PgQQ0
 S1
 R1
-Z9 w1712005634
+Z9 w1712172987
 Z10 8riscv_pipelined.sv
 Z11 Friscv_pipelined.sv
 !i122 0
@@ -56,7 +70,7 @@ Z13 OL;L;2021.3;73
 r1
 !s85 0
 31
-Z14 !s108 1712009147.000000
+Z14 !s108 1712172993.000000
 Z15 !s107 riscv_pipelined.sv|
 Z16 !s90 -reportprogress|300|riscv_pipelined.sv|
 !i113 0
@@ -330,8 +344,8 @@ vimem
 R7
 R8
 !i10b 1
-!s100 =?iO5k8@NB<P8dJMc1PeB2
-I7m42lN1en@7hWK2B@R9b53
+!s100 n?i9amzS`dTzM?SOlMmXo3
+I=GkMLGm^00CTc>L1GP[j:1
 S1
 R1
 R9
@@ -474,8 +488,8 @@ vtestbench
 R7
 R8
 !i10b 1
-!s100 f;45@FUOWAg_bziXoS`ND1
-I9G>`:8fnE^:[:j0`_f2ji1
+!s100 VGfQEG=KE>fK`@h91O?a42
+Im_HB<UJ8FLF]XH5E>;7IN2
 S1
 R1
 R9
