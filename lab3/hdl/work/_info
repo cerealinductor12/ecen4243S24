@@ -54,9 +54,10 @@ R4
 R5
 n@_opt2
 R6
+R1
 vadder
 Z7 DXx6 sv_std 3 std 0 22 9oUSJO;AeEaW`l:M@^WG92
-Z8 !s110 1712174022
+Z8 !s110 1712174961
 !i10b 1
 !s100 mNO1Tl5fFk6b=kJWZz4jZ2
 I<gC4_bhSBMRf`N2G:PgQQ0
@@ -72,11 +73,11 @@ Z13 OL;L;2021.3;73
 r1
 !s85 0
 31
-Z14 !s108 1712174022.000000
-Z15 !s107 riscv_pipelined.sv|
-Z16 !s90 -reportprogress|300|riscv_pipelined.sv|
+Z14 !s108 1712174961.000000
+!s107 riscv_pipelined.sv|
+Z15 !s90 -reportprogress|300|riscv_pipelined.sv|
 !i113 0
-Z17 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
+Z16 o-L mtiAvm -L mtiRnm -L mtiOvm -L mtiUvm -L mtiUPF -L infact
 R5
 valu
 R7
@@ -97,10 +98,10 @@ r1
 !s85 0
 31
 R14
+Z17 !s107 riscv_pipelined.sv|
 R15
-R16
 !i113 0
-R17
+R16
 R5
 valudec
 R7
@@ -121,10 +122,10 @@ r1
 !s85 0
 31
 R14
-R15
-R16
-!i113 0
 R17
+R15
+!i113 0
+R16
 R5
 vcontroller
 R7
@@ -145,10 +146,10 @@ r1
 !s85 0
 31
 R14
-R15
-R16
-!i113 0
 R17
+R15
+!i113 0
+R16
 R5
 vdatapath
 R7
@@ -169,10 +170,10 @@ r1
 !s85 0
 31
 R14
-R15
-R16
-!i113 0
 R17
+R15
+!i113 0
+R16
 R5
 vdmem
 R7
@@ -193,10 +194,10 @@ r1
 !s85 0
 31
 R14
-R15
-R16
-!i113 0
 R17
+R15
+!i113 0
+R16
 R5
 vextend
 R7
@@ -217,10 +218,10 @@ r1
 !s85 0
 31
 R14
-R15
-R16
-!i113 0
 R17
+R15
+!i113 0
+R16
 R5
 vflopenr
 R7
@@ -241,10 +242,10 @@ r1
 !s85 0
 31
 R14
-R15
-R16
-!i113 0
 R17
+R15
+!i113 0
+R16
 R5
 vflopenrc
 R7
@@ -265,10 +266,10 @@ r1
 !s85 0
 31
 R14
-R15
-R16
-!i113 0
 R17
+R15
+!i113 0
+R16
 R5
 vflopr
 R7
@@ -289,10 +290,10 @@ r1
 !s85 0
 31
 R14
-R15
-R16
-!i113 0
 R17
+R15
+!i113 0
+R16
 R5
 vfloprc
 R7
@@ -313,10 +314,10 @@ r1
 !s85 0
 31
 R14
-R15
-R16
-!i113 0
 R17
+R15
+!i113 0
+R16
 R5
 vhazard
 R7
@@ -337,10 +338,10 @@ r1
 !s85 0
 31
 R14
-R15
-R16
-!i113 0
 R17
+R15
+!i113 0
+R16
 R5
 vimem
 R7
@@ -361,10 +362,10 @@ r1
 !s85 0
 31
 R14
-R15
-R16
-!i113 0
 R17
+R15
+!i113 0
+R16
 R5
 vmaindec
 R7
@@ -385,10 +386,10 @@ r1
 !s85 0
 31
 R14
-R15
-R16
-!i113 0
 R17
+R15
+!i113 0
+R16
 R5
 vmux2
 R7
@@ -409,10 +410,10 @@ r1
 !s85 0
 31
 R14
-R15
-R16
-!i113 0
 R17
+R15
+!i113 0
+R16
 R5
 vmux3
 R7
@@ -433,10 +434,10 @@ r1
 !s85 0
 31
 R14
-R15
-R16
-!i113 0
 R17
+R15
+!i113 0
+R16
 R5
 vregfile
 R7
@@ -457,10 +458,10 @@ r1
 !s85 0
 31
 R14
-R15
-R16
-!i113 0
 R17
+R15
+!i113 0
+R16
 R5
 vriscv
 R7
@@ -481,10 +482,10 @@ r1
 !s85 0
 31
 R14
-R15
-R16
-!i113 0
 R17
+R15
+!i113 0
+R16
 R5
 vtestbench
 R7
@@ -505,10 +506,10 @@ r1
 !s85 0
 31
 R14
-R15
-R16
-!i113 0
 R17
+R15
+!i113 0
+R16
 R5
 vtop
 R7
@@ -529,8 +530,8 @@ r1
 !s85 0
 31
 R14
-R15
-R16
-!i113 0
 R17
+R15
+!i113 0
+R16
 R5
