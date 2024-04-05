@@ -17,7 +17,7 @@
 # ** Warning: (vlib-34) Library already exists at "work".
 # Errors: 0, Warnings: 1
 # Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 14:53:42 on Apr 03,2024
+# Start time: 14:37:51 on Apr 05,2024
 # vlog -reportprogress 300 riscv_pipelined.sv 
 # -- Compiling module testbench
 # -- Compiling module top
@@ -42,10 +42,10 @@
 # 
 # Top level modules:
 # 	testbench
-# End time: 14:53:42 on Apr 03,2024, Elapsed time: 0:00:00
+# End time: 14:37:51 on Apr 05,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
 # vsim -debugdb -voptargs="+acc" work.testbench 
-# Start time: 14:53:42 on Apr 03,2024
+# Start time: 14:37:51 on Apr 05,2024
 # ** Note: (vsim-3812) Design is being optimized...
 # ** Note: (vsim-8611) Generating debug db.
 # ** Note: (vopt-4301) Memory core inferred for signal 'RAM' width=32, depth=256, type=RAM at location riscv_pipelined.sv:553
@@ -77,9 +77,9 @@
 # ** Error: (vsim-8357) Internal debugDB error id:ct1  ret:1 table context_tbl already exists
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: Cory  Hostname: CORYSGAMINGLAPT  ProcessID: 18404
-#           Attempting to use alternate WLF file "./wlfts0eis5".
+#           Attempting to use alternate WLF file "./wlftnm5f44".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlfts0eis5
+#           Using alternate file: ./wlftnm5f44
 # Debug data file does not match loaded design.
 # Debug data file does not match loaded design.
 # ** Error: Could not open the database because of the following problem accessing the required debug information:
@@ -89,8 +89,7 @@
 # Debug data file does not match loaded design.
 #     while executing
 # "add schematic -full sim:/testbench/dut/rv32pipe"
-run 1000 us
-find drivers -source -time {2994 ns} -cause Datapath
+run 10 us
 do {.\riscv_pipelined.do}
 # ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is Cory@CORYSGAMINGLAPT.
 # ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is Cory@CORYSGAMINGLAPT.
@@ -101,7 +100,7 @@ do {.\riscv_pipelined.do}
 # ** Warning: (vlib-34) Library already exists at "work".
 # Errors: 0, Warnings: 1
 # Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
-# Start time: 15:09:21 on Apr 03,2024
+# Start time: 14:44:39 on Apr 05,2024
 # vlog -reportprogress 300 riscv_pipelined.sv 
 # -- Compiling module testbench
 # -- Compiling module top
@@ -126,13 +125,14 @@ do {.\riscv_pipelined.do}
 # 
 # Top level modules:
 # 	testbench
-# End time: 15:09:21 on Apr 03,2024, Elapsed time: 0:00:00
+# End time: 14:44:39 on Apr 05,2024, Elapsed time: 0:00:00
 # Errors: 0, Warnings: 0
-# End time: 15:09:22 on Apr 03,2024, Elapsed time: 0:15:40
+# End time: 14:44:40 on Apr 05,2024, Elapsed time: 0:06:49
 # Errors: 2, Warnings: 2
 # vsim -debugdb -voptargs="+acc" work.testbench 
-# Start time: 15:09:22 on Apr 03,2024
-# ** Note: (vsim-8009) Loading existing optimized design _opt2
+# Start time: 14:44:40 on Apr 05,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vsim-8611) Generating debug db.
 # Loading sv_std.std
 # Loading work.testbench(fast)
 # Loading work.top(fast)
@@ -161,9 +161,9 @@ do {.\riscv_pipelined.do}
 # ** Error: (vsim-8357) Internal debugDB error id:ct1  ret:1 table context_tbl already exists
 # ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
 #           File in use by: Cory  Hostname: CORYSGAMINGLAPT  ProcessID: 18404
-#           Attempting to use alternate WLF file "./wlftsjdnqg".
+#           Attempting to use alternate WLF file "./wlftnxayfs".
 # ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
-#           Using alternate file: ./wlftsjdnqg
+#           Using alternate file: ./wlftnxayfs
 # Debug data file does not match loaded design.
 # Debug data file does not match loaded design.
 # ** Error: Could not open the database because of the following problem accessing the required debug information:
@@ -173,6 +173,792 @@ do {.\riscv_pipelined.do}
 # Debug data file does not match loaded design.
 #     while executing
 # "add schematic -full sim:/testbench/dut/rv32pipe"
-run 100 us
-# End time: 15:12:04 on Apr 03,2024, Elapsed time: 0:02:42
+run 10 us
+do {.\riscv_pipelined.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 14:48:02 on Apr 05,2024
+# vlog -reportprogress 300 riscv_pipelined.sv 
+# -- Compiling module testbench
+# -- Compiling module top
+# -- Compiling module riscv
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# -- Compiling module hazard
+# -- Compiling module regfile
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module flopenrc
+# -- Compiling module floprc
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	testbench
+# End time: 14:48:03 on Apr 05,2024, Elapsed time: 0:00:01
+# Errors: 0, Warnings: 0
+# End time: 14:48:03 on Apr 05,2024, Elapsed time: 0:03:23
 # Errors: 2, Warnings: 2
+# vsim -debugdb -voptargs="+acc" work.testbench 
+# Start time: 14:48:03 on Apr 05,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vsim-8611) Generating debug db.
+# Loading sv_std.std
+# Loading work.testbench(fast)
+# Loading work.top(fast)
+# Loading work.riscv(fast)
+# Loading work.controller(fast)
+# Loading work.maindec(fast)
+# Loading work.aludec(fast)
+# Loading work.floprc(fast)
+# Loading work.flopr(fast)
+# Loading work.flopr(fast__1)
+# Loading work.datapath(fast)
+# Loading work.mux2(fast)
+# Loading work.flopenr(fast)
+# Loading work.adder(fast)
+# Loading work.flopenrc(fast)
+# Loading work.regfile(fast)
+# Loading work.extend(fast)
+# Loading work.floprc(fast__1)
+# Loading work.mux3(fast)
+# Loading work.alu(fast)
+# Loading work.flopr(fast__2)
+# Loading work.hazard(fast)
+# Loading work.imem(fast)
+# Loading work.dmem(fast)
+# ** Note: (vsim-8900) Creating design debug database vsim.dbg.
+# ** Error: (vsim-8357) Internal debugDB error id:ct1  ret:1 table context_tbl already exists
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Cory  Hostname: CORYSGAMINGLAPT  ProcessID: 18404
+#           Attempting to use alternate WLF file "./wlfteze5yd".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlfteze5yd
+# Debug data file does not match loaded design.
+# Debug data file does not match loaded design.
+# ** Error: Could not open the database because of the following problem accessing the required debug information:
+# Debug data file does not match loaded design.
+# Error in macro ././riscv_pipelined.do line 90
+# Could not open the database because of the following problem accessing the required debug information:
+# Debug data file does not match loaded design.
+#     while executing
+# "add schematic -full sim:/testbench/dut/rv32pipe"
+run 10 us
+do {.\riscv_pipelined.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 14:50:17 on Apr 05,2024
+# vlog -reportprogress 300 riscv_pipelined.sv 
+# -- Compiling module testbench
+# -- Compiling module top
+# -- Compiling module riscv
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# -- Compiling module hazard
+# -- Compiling module regfile
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module flopenrc
+# -- Compiling module floprc
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	testbench
+# End time: 14:50:17 on Apr 05,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 14:50:18 on Apr 05,2024, Elapsed time: 0:02:15
+# Errors: 2, Warnings: 2
+# vsim -debugdb -voptargs="+acc" work.testbench 
+# Start time: 14:50:18 on Apr 05,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vsim-8611) Generating debug db.
+# Loading sv_std.std
+# Loading work.testbench(fast)
+# Loading work.top(fast)
+# Loading work.riscv(fast)
+# Loading work.controller(fast)
+# Loading work.maindec(fast)
+# Loading work.aludec(fast)
+# Loading work.floprc(fast)
+# Loading work.flopr(fast)
+# Loading work.flopr(fast__1)
+# Loading work.datapath(fast)
+# Loading work.mux2(fast)
+# Loading work.flopenr(fast)
+# Loading work.adder(fast)
+# Loading work.flopenrc(fast)
+# Loading work.regfile(fast)
+# Loading work.extend(fast)
+# Loading work.floprc(fast__1)
+# Loading work.mux3(fast)
+# Loading work.alu(fast)
+# Loading work.flopr(fast__2)
+# Loading work.hazard(fast)
+# Loading work.imem(fast)
+# Loading work.dmem(fast)
+# ** Note: (vsim-8900) Creating design debug database vsim.dbg.
+# ** Error: (vsim-8357) Internal debugDB error id:ct1  ret:1 table context_tbl already exists
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Cory  Hostname: CORYSGAMINGLAPT  ProcessID: 18404
+#           Attempting to use alternate WLF file "./wlftcz90cg".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftcz90cg
+# Debug data file does not match loaded design.
+# Debug data file does not match loaded design.
+# ** Error: Could not open the database because of the following problem accessing the required debug information:
+# Debug data file does not match loaded design.
+# Error in macro ././riscv_pipelined.do line 90
+# Could not open the database because of the following problem accessing the required debug information:
+# Debug data file does not match loaded design.
+#     while executing
+# "add schematic -full sim:/testbench/dut/rv32pipe"
+run 10 us
+do {.\riscv_pipelined.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 14:51:29 on Apr 05,2024
+# vlog -reportprogress 300 riscv_pipelined.sv 
+# -- Compiling module testbench
+# -- Compiling module top
+# -- Compiling module riscv
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# -- Compiling module hazard
+# -- Compiling module regfile
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module flopenrc
+# -- Compiling module floprc
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	testbench
+# End time: 14:51:29 on Apr 05,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 14:51:29 on Apr 05,2024, Elapsed time: 0:01:11
+# Errors: 2, Warnings: 2
+# vsim -debugdb -voptargs="+acc" work.testbench 
+# Start time: 14:51:29 on Apr 05,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vsim-8611) Generating debug db.
+# Loading sv_std.std
+# Loading work.testbench(fast)
+# Loading work.top(fast)
+# Loading work.riscv(fast)
+# Loading work.controller(fast)
+# Loading work.maindec(fast)
+# Loading work.aludec(fast)
+# Loading work.floprc(fast)
+# Loading work.flopr(fast)
+# Loading work.flopr(fast__1)
+# Loading work.datapath(fast)
+# Loading work.mux2(fast)
+# Loading work.flopenr(fast)
+# Loading work.adder(fast)
+# Loading work.flopenrc(fast)
+# Loading work.regfile(fast)
+# Loading work.extend(fast)
+# Loading work.floprc(fast__1)
+# Loading work.mux3(fast)
+# Loading work.alu(fast)
+# Loading work.flopr(fast__2)
+# Loading work.hazard(fast)
+# Loading work.imem(fast)
+# Loading work.dmem(fast)
+# ** Note: (vsim-8900) Creating design debug database vsim.dbg.
+# ** Error: (vsim-8357) Internal debugDB error id:ct1  ret:1 table context_tbl already exists
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Cory  Hostname: CORYSGAMINGLAPT  ProcessID: 18404
+#           Attempting to use alternate WLF file "./wlft87in16".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft87in16
+# ** Warning: (vsim-PLI-3407) Too many data words read on line 257 of file "../../lab1/testing/sra.memfile". (Current address [256], address range [0:255])    : riscv_pipelined.sv(96)
+#    Time: 0 ns  Iteration: 0  Instance: /testbench
+# Debug data file does not match loaded design.
+# Debug data file does not match loaded design.
+# ** Error: Could not open the database because of the following problem accessing the required debug information:
+# Debug data file does not match loaded design.
+# Error in macro ././riscv_pipelined.do line 90
+# Could not open the database because of the following problem accessing the required debug information:
+# Debug data file does not match loaded design.
+#     while executing
+# "add schematic -full sim:/testbench/dut/rv32pipe"
+run 5 us
+do {.\riscv_pipelined.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 15:51:30 on Apr 05,2024
+# vlog -reportprogress 300 riscv_pipelined.sv 
+# -- Compiling module testbench
+# -- Compiling module top
+# -- Compiling module riscv
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# ** Error: riscv_pipelined.sv(407): (vlog-2730) Undefined variable: 'opcode'.
+# ** Error: riscv_pipelined.sv(409): (vlog-2730) Undefined variable: 'funct3E'.
+# -- Compiling module hazard
+# -- Compiling module regfile
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module flopenrc
+# -- Compiling module floprc
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module mux4
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# End time: 15:51:30 on Apr 05,2024, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+# ** Error: C:/modeltech64_2021.3/win64/vlog failed.
+# Error in macro ././riscv_pipelined.do line 30
+# C:/modeltech64_2021.3/win64/vlog failed.
+#     while executing
+# "vlog riscv_pipelined.sv"
+do {.\riscv_pipelined.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 15:51:38 on Apr 05,2024
+# vlog -reportprogress 300 riscv_pipelined.sv 
+# -- Compiling module testbench
+# -- Compiling module top
+# -- Compiling module riscv
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# ** Error: riscv_pipelined.sv(407): (vlog-2730) Undefined variable: 'opcode'.
+# ** Error: riscv_pipelined.sv(409): (vlog-2730) Undefined variable: 'funct3E'.
+# -- Compiling module hazard
+# -- Compiling module regfile
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module flopenrc
+# -- Compiling module floprc
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module mux4
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# End time: 15:51:38 on Apr 05,2024, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+# ** Error: C:/modeltech64_2021.3/win64/vlog failed.
+# Error in macro ././riscv_pipelined.do line 30
+# C:/modeltech64_2021.3/win64/vlog failed.
+#     while executing
+# "vlog riscv_pipelined.sv"
+do {.\riscv_pipelined.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 15:57:37 on Apr 05,2024
+# vlog -reportprogress 300 riscv_pipelined.sv 
+# -- Compiling module testbench
+# -- Compiling module top
+# -- Compiling module riscv
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# ** Error: (vlog-13069) riscv_pipelined.sv(339): near "input": syntax error, unexpected input, expecting ')'.
+# End time: 15:57:37 on Apr 05,2024, Elapsed time: 0:00:00
+# Errors: 1, Warnings: 0
+# ** Error: C:/modeltech64_2021.3/win64/vlog failed.
+# Error in macro ././riscv_pipelined.do line 30
+# C:/modeltech64_2021.3/win64/vlog failed.
+#     while executing
+# "vlog riscv_pipelined.sv"
+do {.\riscv_pipelined.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 15:57:58 on Apr 05,2024
+# vlog -reportprogress 300 riscv_pipelined.sv 
+# -- Compiling module testbench
+# -- Compiling module top
+# -- Compiling module riscv
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# ** Error (suppressible): riscv_pipelined.sv(415): (vlog-10008) Too many indices (1) for array type LBResultW (dimensionality 0).
+# ** Error (suppressible): riscv_pipelined.sv(417): (vlog-10008) Too many indices (1) for array type LHResultW (dimensionality 0).
+# -- Compiling module hazard
+# -- Compiling module regfile
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module flopenrc
+# -- Compiling module floprc
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module mux4
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# End time: 15:57:58 on Apr 05,2024, Elapsed time: 0:00:00
+# Errors: 2, Warnings: 0
+# ** Error: C:/modeltech64_2021.3/win64/vlog failed.
+# Error in macro ././riscv_pipelined.do line 30
+# C:/modeltech64_2021.3/win64/vlog failed.
+#     while executing
+# "vlog riscv_pipelined.sv"
+do {.\riscv_pipelined.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 16:00:04 on Apr 05,2024
+# vlog -reportprogress 300 riscv_pipelined.sv 
+# -- Compiling module testbench
+# -- Compiling module top
+# -- Compiling module riscv
+# -- Compiling module controller
+# -- Compiling module maindec
+# -- Compiling module aludec
+# -- Compiling module datapath
+# -- Compiling module hazard
+# -- Compiling module regfile
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module flopenrc
+# -- Compiling module floprc
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module mux4
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	testbench
+# End time: 16:00:04 on Apr 05,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 0
+# End time: 16:00:05 on Apr 05,2024, Elapsed time: 1:08:36
+# Errors: 6, Warnings: 3
+# vsim -debugdb -voptargs="+acc" work.testbench 
+# Start time: 16:00:05 on Apr 05,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vsim-8611) Generating debug db.
+# ** Note: (vopt-4301) Memory core inferred for signal 'RAM' width=32, depth=256, type=RAM at location riscv_pipelined.sv:587
+# Loading sv_std.std
+# Loading work.testbench(fast)
+# Loading work.top(fast)
+# Loading work.riscv(fast)
+# Loading work.controller(fast)
+# Loading work.maindec(fast)
+# Loading work.aludec(fast)
+# Loading work.floprc(fast)
+# Loading work.flopr(fast)
+# Loading work.flopr(fast__1)
+# Loading work.datapath(fast)
+# Loading work.mux2(fast)
+# Loading work.flopenr(fast)
+# Loading work.adder(fast)
+# Loading work.flopenrc(fast)
+# Loading work.regfile(fast)
+# Loading work.extend(fast)
+# Loading work.floprc(fast__1)
+# Loading work.mux3(fast)
+# Loading work.alu(fast)
+# Loading work.flopr(fast__2)
+# Loading work.mux4(fast)
+# Loading work.mux2(fast__1)
+# Loading work.hazard(fast)
+# Loading work.imem(fast)
+# Loading work.dmem(fast)
+# ** Note: (vsim-8900) Creating design debug database vsim.dbg.
+# ** Error: (vsim-8357) Internal debugDB error id:ct1  ret:1 table context_tbl already exists
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Cory  Hostname: CORYSGAMINGLAPT  ProcessID: 18404
+#           Attempting to use alternate WLF file "./wlft14j9bg".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft14j9bg
+# ** Warning: (vsim-PLI-3407) Too many data words read on line 257 of file "../../lab1/testing/lb.memfile". (Current address [256], address range [0:255])    : riscv_pipelined.sv(96)
+#    Time: 0 ns  Iteration: 0  Instance: /testbench
+# Debug data file does not match loaded design.
+# Debug data file does not match loaded design.
+# ** Error: Could not open the database because of the following problem accessing the required debug information:
+# Debug data file does not match loaded design.
+# Error in macro ././riscv_pipelined.do line 90
+# Could not open the database because of the following problem accessing the required debug information:
+# Debug data file does not match loaded design.
+#     while executing
+# "add schematic -full sim:/testbench/dut/rv32pipe"
+do {.\riscv_pipelined.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 17:12:52 on Apr 05,2024
+# vlog -reportprogress 300 riscv_pipelined.sv 
+# -- Compiling module testbench
+# -- Compiling module top
+# -- Compiling module riscv
+# -- Compiling module controller
+# -- Compiling module maindec
+# ** Warning: riscv_pipelined.sv(273): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(274): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(275): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(276): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(277): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(278): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(279): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(280): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(281): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# -- Compiling module aludec
+# -- Compiling module datapath
+# -- Compiling module hazard
+# -- Compiling module regfile
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module flopenrc
+# -- Compiling module floprc
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module mux4
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	testbench
+# End time: 17:12:52 on Apr 05,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 9
+# End time: 17:12:52 on Apr 05,2024, Elapsed time: 1:12:47
+# Errors: 2, Warnings: 3
+# vsim -debugdb -voptargs="+acc" work.testbench 
+# Start time: 17:12:52 on Apr 05,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vsim-8611) Generating debug db.
+# ** Note: (vopt-4301) Memory core inferred for signal 'RAM' width=32, depth=256, type=RAM at location riscv_pipelined.sv:590
+# Loading sv_std.std
+# Loading work.testbench(fast)
+# Loading work.top(fast)
+# Loading work.riscv(fast)
+# Loading work.controller(fast)
+# Loading work.maindec(fast)
+# Loading work.aludec(fast)
+# Loading work.floprc(fast)
+# Loading work.flopr(fast)
+# Loading work.flopr(fast__1)
+# Loading work.datapath(fast)
+# Loading work.mux2(fast)
+# Loading work.flopenr(fast)
+# Loading work.adder(fast)
+# Loading work.flopenrc(fast)
+# Loading work.regfile(fast)
+# Loading work.extend(fast)
+# Loading work.floprc(fast__1)
+# Loading work.mux3(fast)
+# Loading work.alu(fast)
+# Loading work.flopr(fast__2)
+# Loading work.mux4(fast)
+# Loading work.mux2(fast__1)
+# Loading work.hazard(fast)
+# Loading work.imem(fast)
+# Loading work.dmem(fast)
+# ** Note: (vsim-8900) Creating design debug database vsim.dbg.
+# ** Error: (vsim-8357) Internal debugDB error id:ct1  ret:1 table context_tbl already exists
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Cory  Hostname: CORYSGAMINGLAPT  ProcessID: 18404
+#           Attempting to use alternate WLF file "./wlftsj1xwr".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftsj1xwr
+# Debug data file does not match loaded design.
+# Debug data file does not match loaded design.
+# ** Error: Could not open the database because of the following problem accessing the required debug information:
+# Debug data file does not match loaded design.
+# Error in macro ././riscv_pipelined.do line 90
+# Could not open the database because of the following problem accessing the required debug information:
+# Debug data file does not match loaded design.
+#     while executing
+# "add schematic -full sim:/testbench/dut/rv32pipe"
+clear
+# invalid command name "clear"
+clr
+# invalid command name "clr"
+do {.\riscv_pipelined.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 17:24:09 on Apr 05,2024
+# vlog -reportprogress 300 riscv_pipelined.sv 
+# -- Compiling module testbench
+# -- Compiling module top
+# -- Compiling module riscv
+# -- Compiling module controller
+# -- Compiling module maindec
+# ** Warning: riscv_pipelined.sv(273): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(274): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(275): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(276): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(277): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(278): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(279): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(280): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(281): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# -- Compiling module aludec
+# -- Compiling module datapath
+# -- Compiling module hazard
+# -- Compiling module regfile
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module flopenrc
+# -- Compiling module floprc
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module mux4
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	testbench
+# End time: 17:24:09 on Apr 05,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 9
+# End time: 17:24:09 on Apr 05,2024, Elapsed time: 0:11:17
+# Errors: 2, Warnings: 2
+# vsim -debugdb -voptargs="+acc" work.testbench 
+# Start time: 17:24:09 on Apr 05,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vsim-8611) Generating debug db.
+# ** Note: (vopt-4301) Memory core inferred for signal 'RAM' width=32, depth=256, type=RAM at location riscv_pipelined.sv:595
+# Loading sv_std.std
+# Loading work.testbench(fast)
+# Loading work.top(fast)
+# Loading work.riscv(fast)
+# Loading work.controller(fast)
+# Loading work.maindec(fast)
+# Loading work.aludec(fast)
+# Loading work.floprc(fast)
+# Loading work.flopr(fast)
+# Loading work.flopr(fast__1)
+# Loading work.datapath(fast)
+# Loading work.mux2(fast)
+# Loading work.flopenr(fast)
+# Loading work.adder(fast)
+# Loading work.flopenrc(fast)
+# Loading work.regfile(fast)
+# Loading work.extend(fast)
+# Loading work.floprc(fast__1)
+# Loading work.mux3(fast)
+# Loading work.alu(fast)
+# Loading work.flopr(fast__2)
+# Loading work.mux4(fast)
+# Loading work.mux2(fast__1)
+# Loading work.hazard(fast)
+# Loading work.imem(fast)
+# Loading work.dmem(fast)
+# ** Note: (vsim-8900) Creating design debug database vsim.dbg.
+# ** Error: (vsim-8357) Internal debugDB error id:ct1  ret:1 table context_tbl already exists
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Cory  Hostname: CORYSGAMINGLAPT  ProcessID: 18404
+#           Attempting to use alternate WLF file "./wlft820trk".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlft820trk
+# Debug data file does not match loaded design.
+# Debug data file does not match loaded design.
+# ** Error: Could not open the database because of the following problem accessing the required debug information:
+# Debug data file does not match loaded design.
+# Error in macro ././riscv_pipelined.do line 90
+# Could not open the database because of the following problem accessing the required debug information:
+# Debug data file does not match loaded design.
+#     while executing
+# "add schematic -full sim:/testbench/dut/rv32pipe"
+do {.\riscv_pipelined.do}
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt1".  Locker is Cory@CORYSGAMINGLAPT.
+# ** Warning: (vdel-134) Unable to remove locked optimized design "_opt2".  Locker is Cory@CORYSGAMINGLAPT.
+# Error 31: Unable to unlink file "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2/__mti.dbg".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer/#64_opt2".
+# Error 133: Unable to remove directory "C:/Users/Cory/OneDrive/Documents/GitHub/ecen4243S24/lab3/hdl/work/_dbcontainer".
+# ** Warning: (vlib-34) Library already exists at "work".
+# Errors: 0, Warnings: 1
+# Model Technology ModelSim SE-64 vlog 2021.3 Compiler 2021.07 Jul 13 2021
+# Start time: 17:26:20 on Apr 05,2024
+# vlog -reportprogress 300 riscv_pipelined.sv 
+# -- Compiling module testbench
+# -- Compiling module top
+# -- Compiling module riscv
+# -- Compiling module controller
+# -- Compiling module maindec
+# ** Warning: riscv_pipelined.sv(273): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(274): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(275): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(276): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(277): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(278): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(279): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(280): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# ** Warning: riscv_pipelined.sv(281): (vlog-2600) [RDGN] - Redundant digits in numeric literal.
+# -- Compiling module aludec
+# -- Compiling module datapath
+# -- Compiling module hazard
+# -- Compiling module regfile
+# -- Compiling module adder
+# -- Compiling module extend
+# -- Compiling module flopr
+# -- Compiling module flopenr
+# -- Compiling module flopenrc
+# -- Compiling module floprc
+# -- Compiling module mux2
+# -- Compiling module mux3
+# -- Compiling module mux4
+# -- Compiling module imem
+# -- Compiling module dmem
+# -- Compiling module alu
+# 
+# Top level modules:
+# 	testbench
+# End time: 17:26:20 on Apr 05,2024, Elapsed time: 0:00:00
+# Errors: 0, Warnings: 9
+# End time: 17:26:21 on Apr 05,2024, Elapsed time: 0:02:12
+# Errors: 2, Warnings: 2
+# vsim -debugdb -voptargs="+acc" work.testbench 
+# Start time: 17:26:21 on Apr 05,2024
+# ** Note: (vsim-3813) Design is being optimized due to module recompilation...
+# ** Note: (vsim-8611) Generating debug db.
+# Loading sv_std.std
+# Loading work.testbench(fast)
+# Loading work.top(fast)
+# Loading work.riscv(fast)
+# Loading work.controller(fast)
+# Loading work.maindec(fast)
+# Loading work.aludec(fast)
+# Loading work.floprc(fast)
+# Loading work.flopr(fast)
+# Loading work.flopr(fast__1)
+# Loading work.datapath(fast)
+# Loading work.mux2(fast)
+# Loading work.flopenr(fast)
+# Loading work.adder(fast)
+# Loading work.flopenrc(fast)
+# Loading work.regfile(fast)
+# Loading work.extend(fast)
+# Loading work.floprc(fast__1)
+# Loading work.mux3(fast)
+# Loading work.alu(fast)
+# Loading work.flopr(fast__2)
+# Loading work.mux4(fast)
+# Loading work.mux2(fast__1)
+# Loading work.hazard(fast)
+# Loading work.imem(fast)
+# Loading work.dmem(fast)
+# ** Note: (vsim-8900) Creating design debug database vsim.dbg.
+# ** Error: (vsim-8357) Internal debugDB error id:ct1  ret:1 table context_tbl already exists
+# ** Warning: (vsim-WLF-5000) WLF file currently in use: vsim.wlf
+#           File in use by: Cory  Hostname: CORYSGAMINGLAPT  ProcessID: 18404
+#           Attempting to use alternate WLF file "./wlftka4rw9".
+# ** Warning: (vsim-WLF-5001) Could not open WLF file: vsim.wlf
+#           Using alternate file: ./wlftka4rw9
+# Debug data file does not match loaded design.
+# Debug data file does not match loaded design.
+# ** Error: Could not open the database because of the following problem accessing the required debug information:
+# Debug data file does not match loaded design.
+# Error in macro ././riscv_pipelined.do line 90
+# Could not open the database because of the following problem accessing the required debug information:
+# Debug data file does not match loaded design.
+#     while executing
+# "add schematic -full sim:/testbench/dut/rv32pipe"
+run 5 us
