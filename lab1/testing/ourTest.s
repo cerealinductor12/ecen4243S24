@@ -11,7 +11,7 @@ __start:
     li t1, 4 # incrementer
     li t2, 0 # counter
     li t3, 10 # number of iterations
-    li t5, 0 # value to store
+    li t5, 0 # value to store 
 
 loop:
     sw t5, 0(t0)
