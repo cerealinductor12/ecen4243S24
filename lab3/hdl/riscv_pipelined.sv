@@ -92,7 +92,7 @@ module testbench();
    initial
      begin
 	string memfilename;
-        memfilename = {"../../lab1/testing/bne.memfile"};
+        memfilename = {"../../lab1/testing/lui.memfile"};
 	$readmemh(memfilename, dut.imem.RAM);
      end
    
@@ -270,15 +270,15 @@ module maindec(input  logic [6:0] op,
    always_comb
      case(op)
        // RegWrite_ImmSrc_ALUSrc_MemWrite_ResultSrc_Branch_ALUOp_Jump
-       7'b0000011: controls = 11'b1_000_1_0_01_0_00_0; // lw
-       7'b0100011: controls = 11'b0_001_1_1_00_0_00_0; // sw
-       7'b0110011: controls = 11'b1_xxx_0_0_00_0_10_0; // R-type 
-       7'b1100011: controls = 11'b0_010_0_0_00_1_01_0; // beq
-       7'b0010011: controls = 11'b1_000_1_0_00_0_10_0; // I-type ALU
-       7'b1101111: controls = 11'b1_011_0_0_10_0_00_1; // jal
-       7'b0110111: controls = 11'b1_100_1_0_00_0_00_0; // lui
-       7'b0000000: controls = 11'b0_000_0_0_00_0_00_0; // need valid values at reset
-       default:    controls = 11'bx_xxx_x_x_xx_x_xx_x; // non-implemented instruction
+       7'b0000011: controls = 12'b1_000_1_0_01_0_00_0; // lw
+       7'b0100011: controls = 12'b0_001_1_1_00_0_00_0; // sw
+       7'b0110011: controls = 12'b1_xxx_0_0_00_0_10_0; // R-type 
+       7'b1100011: controls = 12'b0_010_0_0_00_1_01_0; // beq
+       7'b0010011: controls = 12'b1_000_1_0_00_0_10_0; // I-type ALU
+       7'b1101111: controls = 12'b1_011_0_0_10_0_00_1; // jal
+       7'b0110111: controls = 12'b1_100_1_0_00_0_00_0; // lui
+       7'b0000000: controls = 12'b0_000_0_0_00_0_00_0; // need valid values at reset
+       default:    controls = 12'bx_xxx_x_x_xx_x_xx_x; // non-implemented instruction
      endcase
 endmodule
 
@@ -292,12 +292,11 @@ module aludec(input  logic       opb5,
    assign RtypeSub = funct7b5 & opb5;  // TRUE for R-type subtract instruction
 
    always_comb
-    case(opb5)
-     1'b0: // R-type
+    
      case(ALUOp)
        2'b00:                ALUControl = 4'b0000; // addition
        2'b01:                ALUControl = 4'b0001; // subtraction
-       default: case(funct3) // R-type or I-type ALU
+       2'b10: case(funct3) // R-type or I-type ALU
                     3'b000:  if (RtypeSub) 
                       ALUControl = 4'b0001; // sub
                     else          
@@ -308,10 +307,8 @@ module aludec(input  logic       opb5,
                     3'b101:    ALUControl = 4'b1000; // sra
                     default:   ALUControl = 4'b0xxx; // ???
                 endcase
-     1'b1: // U-type
-     ALUControl = 4'b1010;
+       default:                ALUControl = 4'b1010; // lui
      endcase
-    endcase
 endmodule
 
 module datapath(input logic clk, reset,
@@ -369,8 +366,8 @@ module datapath(input logic clk, reset,
    logic [31:0] 		    PCPlus4W;
    logic [31:0] 		    ResultW;
    logic [31:0]         mid;
-   logic [7:0]          LBResultW;
-   logic [15:0]         LHResultW;
+   logic [7:0]          LBResultM;
+   logic [15:0]         LHResultM;
 
    // Fetch stage pipeline register and logic
    mux2    #(32) pcmux(PCPlus4F, PCTargetE, PCSrcE, PCNextF);
@@ -409,22 +406,22 @@ module datapath(input logic clk, reset,
    
    // Writeback stage pipeline register and logic
    flopr  #(101) regW(clk, reset, 
-                      {ALUResultM, ReadDataM, RdM, PCPlus4M},
+                      {ALUResultM, mid, RdM, PCPlus4M},
                       {ALUResultW, ReadDataW, RdW, PCPlus4W});
    mux3   #(32)  resultmux(ALUResultW, mid, PCPlus4W, ResultSrcW, ResultW);
 
-   mux4 #(8) lbmux (ReadDataW[7:0], ReadDataW[15:8], ReadDataW[23:16], ReadDataW[31:24], ALUResultW[1:0], LBResultW);
-   mux2 #(16) lhmux (ReadDataW[15:0], ReadDataW[31:16], ALUResultW[1], LHResultW);
+   mux4 #(8) lbmux (ReadDataM[7:0], ReadDataM[15:8], ReadDataM[23:16], ReadDataM[31:24], ALUResultM[1:0], LBResultM);
+   mux2 #(16) lhmux (ReadDataM[15:0], ReadDataM[31:16], ALUResultM[1], LHResultM);
 
    always_comb
     case(opcode)
       7'b0000011: // loads
       case(funct3E)
-        3'b000: mid = {{24{LBResultW[7]}}, LBResultW};  // lb
-        3'b100: mid = {24'b0, LBResultW};               // lbu
-        3'b001: mid = {{16{LHResultW[15]}}, LHResultW}; // lh
-        3'b101: mid = {16'b0, LHResultW};               // lhu
-        3'b010: mid = ReadDataW;                        // lw
+        3'b000: mid = {{24{LBResultM[7]}}, LBResultM};  // lb
+        3'b100: mid = {24'b0, LBResultM};               // lbu
+        3'b001: mid = {{16{LHResultM[15]}}, LHResultM}; // lh
+        3'b101: mid = {16'b0, LHResultM};               // lhu
+        3'b010: mid = ReadDataM;                        // lw
         default: mid = 32'bx;
       endcase
     endcase
