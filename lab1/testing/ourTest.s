@@ -11,6 +11,7 @@ __start:
     li t1, 4 # incrementer
     li t2, 0 # counter
     li t3, 10 # number of iterations
+    li t4, 0 # value to load
     li t5, 0 # value to store 
 
 loop:
