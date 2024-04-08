@@ -365,9 +365,10 @@ module datapath(input logic clk, reset,
    logic [31:0] 		    ReadDataW;
    logic [31:0] 		    PCPlus4W;
    logic [31:0] 		    ResultW;
-   logic [31:0]         mid;
-   logic [7:0]          LBResultM;
-   logic [15:0]         LHResultM;
+   logic [31:0]         midM;
+   logic [7:0]          LBResultM, SBResultM;
+   logic [15:0]         LHResultM, SHResultM;
+   logic [31:0]         WriteDataMidM;
 
    // Fetch stage pipeline register and logic
    mux2    #(32) pcmux(PCPlus4F, PCTargetE, PCSrcE, PCNextF);
@@ -402,27 +403,39 @@ module datapath(input logic clk, reset,
    // Memory stage pipeline register
    flopr  #(101) regM(clk, reset, 
                       {ALUResultE, WriteDataE, RdE, PCPlus4E},
-                      {ALUResultM, WriteDataM, RdM, PCPlus4M});
+                      {ALUResultM, WriteDataMidM, RdM, PCPlus4M});
    
    // Writeback stage pipeline register and logic
    flopr  #(101) regW(clk, reset, 
-                      {ALUResultM, mid, RdM, PCPlus4M},
+                      {ALUResultM, midM, RdM, PCPlus4M},
                       {ALUResultW, ReadDataW, RdW, PCPlus4W});
-   mux3   #(32)  resultmux(ALUResultW, mid, PCPlus4W, ResultSrcW, ResultW);
+   mux3   #(32)  resultmux(ALUResultW, midM, PCPlus4W, ResultSrcW, ResultW);
 
    mux4 #(8) lbmux (ReadDataM[7:0], ReadDataM[15:8], ReadDataM[23:16], ReadDataM[31:24], ALUResultM[1:0], LBResultM);
    mux2 #(16) lhmux (ReadDataM[15:0], ReadDataM[31:16], ALUResultM[1], LHResultM);
+   mux4 #(32) sbmux ({ReadDataM[31:8], WriteDataMidM[7:0]}, {ReadDataM[31:16], WriteDataMidM[7:0], ReadDataM[7:0]},
+                     {ReadDataM[31:24], WriteDataMidM[7:0], ReadDataM[15:0]}, {WriteDataMidM[7:0], ReadDataM[23:0]}, 
+                      ALUResultM[1:0], SBResultM);
+   mux2 #(32) shmux ({ReadDataM[31:16], WriteDataMidM[15:0]}, {WriteDataMidM[15:0], ReadDataM[15:0]},
+                      ALUResultM[1], SHResultM);
 
    always_comb
     case(opcode)
       7'b0000011: // loads
       case(funct3E)
-        3'b000: mid = {{24{LBResultM[7]}}, LBResultM};  // lb
-        3'b100: mid = {24'b0, LBResultM};               // lbu
-        3'b001: mid = {{16{LHResultM[15]}}, LHResultM}; // lh
-        3'b101: mid = {16'b0, LHResultM};               // lhu
-        3'b010: mid = ReadDataM;                        // lw
-        default: mid = 32'bx;
+        3'b000: midM = {{24{LBResultM[7]}}, LBResultM};  // lb
+        3'b100: midM = {24'b0, LBResultM};               // lbu
+        3'b001: midM = {{16{LHResultM[15]}}, LHResultM}; // lh
+        3'b101: midM = {16'b0, LHResultM};               // lhu
+        3'b010: midM = ReadDataM;                        // lw
+        default: midM = 32'bx;
+      endcase
+      7'b0100011: // stores
+      case(funct3E)
+        3'b000: WriteDataM = SBResultM;  // sb
+        3'b001: WriteDataM = SHResultM;  // sh
+        3'b010: WriteDataM = WriteDataMidM; // sw
+        default: WriteDataM = 32'bx;
       endcase
     endcase
 

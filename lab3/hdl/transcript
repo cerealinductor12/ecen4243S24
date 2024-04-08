@@ -411,3 +411,5 @@ do {.\riscv_pipelined.do}
 #     while executing
 # "add schematic -full sim:/testbench/dut/rv32pipe"
 run 5 us
+# End time: 15:17:05 on Apr 08,2024, Elapsed time: 0:04:46
+# Errors: 2, Warnings: 2
