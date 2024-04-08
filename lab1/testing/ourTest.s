@@ -17,7 +17,7 @@ loop:
     sw t5, 0(t0)
     addi t2, t2, 1
     add t0, t0, t1
-    addi t5, 7
+    addi t5, t5, 7
     lw t4, 0(t0) # loading word from base
     addi t2, t2, 1
     add t0, t0, t1
