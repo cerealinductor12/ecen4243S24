@@ -15,18 +15,12 @@ __start:
 
 loop:
     sw t5, 0(t0)
-    addi t2, t2, 1
-    add t0, t0, t1
-    addi t5, t5, 7
-    lw t4, 0(t0) # loading word from base
-    addi t2, t2, 1
-    add t0, t0, t1
-    nop
-    nop
-    bne t4, t5, failure
+    lw t4, 0(t0)
+    bne t4, t5, failure # if stored value != loaded value, failed
+    addi t2, t2, 1 # increment counter
+    add t0, t0, t1 # increment address
+    addi t5, t5, 7 # increment value to store
     blt t2, t3, loop
-    nop
-    nop
     ecall
 
 failure:

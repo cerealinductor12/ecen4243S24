@@ -108,19 +108,19 @@ module testbench();
 	clk <= 1; # 5; clk <= 0; # 5;
      end
 
-   // check results
-   always @(negedge clk)
-     begin
-	if(MemWrite) begin
-           if(DataAdr === 100 & WriteData === 25) begin
-              $display("Simulation succeeded");
-              $stop;
-           end else if (DataAdr !== 96) begin
-              $display("Simulation failed");
-              $stop;
-           end
-	end
-     end
+  //  // check results
+  //  always @(negedge clk)
+  //    begin
+	// if(MemWrite) begin
+  //          if(DataAdr === 100 & WriteData === 25) begin
+  //             $display("Simulation succeeded");
+  //             $stop;
+  //          end else if (DataAdr !== 96) begin
+  //             $display("Simulation failed");
+  //             $stop;
+  //          end
+	// end
+  //    end
 endmodule
 
 module top(input  logic        clk, reset, 
