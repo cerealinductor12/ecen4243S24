@@ -176,7 +176,7 @@ module riscv(input  logic        clk, reset,
                MemWriteM, WriteDataM, ALUResultM, ReadDataM,
                RegWriteW, ResultSrcW,
                Rs1D, Rs2D, Rs1E, Rs2E, RdE, RdM, RdW,
-               opD, funct3E);
+               funct3E);
 
    hazard  hu(Rs1D, Rs2D, Rs1E, Rs2E, RdE, RdM, RdW,
               PCSrcE, ResultSrcEb0, RegWriteM, RegWriteW,
@@ -339,7 +339,6 @@ module datapath(input logic clk, reset,
                 // Hazard Unit signals 
                 output logic [4:0]  Rs1D, Rs2D, Rs1E, Rs2E,
                 output logic [4:0]  RdE, RdM, RdW,
-                input logic [6:0]   opcode,
                 input logic [2:0]   funct3E);
 
    // Fetch stage signals
@@ -369,6 +368,7 @@ module datapath(input logic clk, reset,
    logic [7:0]          LBResultM, SBResultM;
    logic [15:0]         LHResultM, SHResultM;
    logic [31:0]         WriteDataMidM;
+   logic [2:0]          funct3M;
 
    // Fetch stage pipeline register and logic
    mux2    #(32) pcmux(PCPlus4F, PCTargetE, PCSrcE, PCNextF);
@@ -401,15 +401,15 @@ module datapath(input logic clk, reset,
    adder         branchadd(ImmExtE, PCE, PCTargetE);
 
    // Memory stage pipeline register
-   flopr  #(101) regM(clk, reset, 
-                      {ALUResultE, WriteDataE, RdE, PCPlus4E},
-                      {ALUResultM, WriteDataMidM, RdM, PCPlus4M});
+   flopr  #(104) regM(clk, reset, 
+                      {ALUResultE, WriteDataE, RdE, PCPlus4E, funct3E},
+                      {ALUResultM, WriteDataMidM, RdM, PCPlus4M, funct3M});
    
    // Writeback stage pipeline register and logic
    flopr  #(101) regW(clk, reset, 
                       {ALUResultM, midM, RdM, PCPlus4M},
                       {ALUResultW, ReadDataW, RdW, PCPlus4W});
-   mux3   #(32)  resultmux(ALUResultW, midM, PCPlus4W, ResultSrcW, ResultW);
+   mux3   #(32)  resultmux(ALUResultW, ReadDataW, PCPlus4W, ResultSrcW, ResultW);
 
    mux4 #(8) lbmux (ReadDataM[7:0], ReadDataM[15:8], ReadDataM[23:16], ReadDataM[31:24], ALUResultM[1:0], LBResultM);
    mux2 #(16) lhmux (ReadDataM[15:0], ReadDataM[31:16], ALUResultM[1], LHResultM);
@@ -419,10 +419,9 @@ module datapath(input logic clk, reset,
    mux2 #(32) shmux ({ReadDataM[31:16], WriteDataMidM[15:0]}, {WriteDataMidM[15:0], ReadDataM[15:0]},
                       ALUResultM[1], SHResultM);
 
-   always_comb
-    case(opcode)
-      7'b0000011: // loads
-      case(funct3E)
+  always_comb
+    begin
+      case(funct3M)
         3'b000: midM = {{24{LBResultM[7]}}, LBResultM};  // lb
         3'b100: midM = {24'b0, LBResultM};               // lbu
         3'b001: midM = {{16{LHResultM[15]}}, LHResultM}; // lh
@@ -430,14 +429,14 @@ module datapath(input logic clk, reset,
         3'b010: midM = ReadDataM;                        // lw
         default: midM = 32'bx;
       endcase
-      7'b0100011: // stores
-      case(funct3E)
-        3'b000: WriteDataM = SBResultM;  // sb
-        3'b001: WriteDataM = SHResultM;  // sh
-        3'b010: WriteDataM = WriteDataMidM; // sw
+      case(funct3M)
+        3'b000: WriteDataM = SBResultM;       // sb
+        3'b001: WriteDataM = SHResultM;       // sh
+        3'b010: WriteDataM = WriteDataMidM;   // sw
         default: WriteDataM = 32'bx;
       endcase
-    endcase
+    end
+    
 
 endmodule
 
