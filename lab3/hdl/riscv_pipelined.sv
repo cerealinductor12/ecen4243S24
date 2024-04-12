@@ -92,7 +92,7 @@ module testbench();
    initial
      begin
 	string memfilename;
-        memfilename = {"../../lab1/testing/ourTest.memfile"};
+        memfilename = {"../../lab1/testing/lw.memfile"};
 	$readmemh(memfilename, dut.imem.RAM);
      end
    
@@ -365,10 +365,13 @@ module datapath(input logic clk, reset,
    logic [31:0] 		    PCPlus4W;
    logic [31:0] 		    ResultW;
    logic [31:0]         midM;
-   logic [7:0]          LBResultM, SBResultM;
-   logic [15:0]         LHResultM, SHResultM;
+   logic [7:0]          LBResultM;
+   logic [31:0]         SBResultM;
+   logic [15:0]         LHResultM; 
+   logic [31:0]         SHResultM;
    logic [31:0]         WriteDataMidM;
    logic [2:0]          funct3M;
+   logic [31:0]         AE;
 
    // Fetch stage pipeline register and logic
    mux2    #(32) pcmux(PCPlus4F, PCTargetE, PCSrcE, PCNextF);
