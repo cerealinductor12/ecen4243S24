@@ -304,7 +304,7 @@ module aludec(input  logic       opb5,
                     3'b010:    ALUControl = 4'b0101; // slt, slti
                     3'b110:    ALUControl = 4'b0011; // or, ori
                     3'b111:    ALUControl = 4'b0010; // and, andi
-                    3'b101:    ALUControl = 4'b1000; // sra
+                    3'b101:    ALUControl = 4'b1000; // sra, srai
                     default:   ALUControl = 4'b0xxx; // ???
                 endcase
        default:                ALUControl = 4'b1010; // lui
@@ -635,7 +635,7 @@ module alu(input  logic [31:0] a, b,
        4'b0110:  result = a << b[4:0]; // sll
        4'b0111:  result = a >> b[4:0]; // srl
        4'b1000:  result = a >>> b[4:0];// sra
-       4'b1010:  result = b;           // lui
+       4'b1010:  result = {b, 12'b0};  // lui
 
        default: result = 32'bx;
      endcase

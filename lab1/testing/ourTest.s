@@ -8,15 +8,15 @@
 
 __start:
     li t0, 0 # base address of array to read
-    li t1, 4 # incrementer
+    li t1, 1 # incrementer
     li t2, 0 # counter
     li t3, 10 # number of iterations
     li t4, 0 # value to load
     li t5, 0 # value to store 
 
 loop:
-    sw t5, 0(t0)
-    lw t4, 0(t0)
+    sb t5, 0(t0)
+    lb t4, 0(t0)
     bne t4, t5, failure # if stored value != loaded value, failed
     addi t2, t2, 1 # increment counter
     add t0, t0, t1 # increment address
