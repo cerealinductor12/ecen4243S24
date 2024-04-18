@@ -92,7 +92,7 @@ module testbench();
    initial
      begin
 	string memfilename;
-        memfilename = {"../../lab1/testing/lw.memfile"};
+        memfilename = {"../../lab1/testing/ourTest.memfile"};
 	$readmemh(memfilename, dut.imem.RAM);
      end
    
@@ -439,7 +439,6 @@ module datapath(input logic clk, reset,
         default: WriteDataM = 32'bx;
       endcase
     end
-    
 
 endmodule
 

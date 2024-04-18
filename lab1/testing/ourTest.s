@@ -22,7 +22,7 @@ loop:
     add t0, t0, t1 # increment address
     addi t5, t5, 7 # increment value to store
     blt t2, t3, loop
-    ecall
+    ecall # only runs this ecall once the program fully succeeds
 
 failure:
     ecall
